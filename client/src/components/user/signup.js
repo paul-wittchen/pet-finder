@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 export default class Signup extends Component {
     constructor() {
@@ -7,25 +8,46 @@ export default class Signup extends Component {
 
         this.state = {
             loading: true,
-            user: {}
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: ''
         }
     }
 
-    componentDidMount() {
+    onChangeValue = (event) => {
         this.setState({
-
+            [event.target.name]: event.target.value
         })
+    }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+
+        const user = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        axios
+            .post('http://localhost:8000/signup', user)
+            .then((res) => (window.location = res.data.url))
+            .catch((err) => console.error(err))
     }
 
     render() {
         return(
             <div className='container text-center'>
-                <Form>
+                <Form onSubmit={this.onSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Firstname</Form.Label>
                         <Form.Control 
                             type="text" 
                             placeholder="Enter Firstname"
+                            value={this.state.firstname}
+                            onChange={this.onChangeValue}
                             required
                         />
                     </Form.Group>
@@ -34,6 +56,8 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="text" 
                             placeholder="Enter Lastname"
+                            value={this.state.lastname}
+                            onChange={this.onChangeValue}
                             required
                         />
                     </Form.Group>
@@ -42,6 +66,8 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="email" 
                             placeholder="Enter Email"
+                            value={this.state.email}
+                            onChange={this.onChangeValue}
                             required
                         />
                     </Form.Group>
@@ -50,6 +76,8 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="password" 
                             placeholder="Enter Password"
+                            value={this.state.password}
+                            onChange={this.onChangeValue}
                             required
                         />
                     </Form.Group>
