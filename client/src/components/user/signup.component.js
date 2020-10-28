@@ -33,7 +33,7 @@ export default class Signup extends Component {
 
         axios
             .post('/signup', user)
-            .then((res) => (window.location = res.data.url))
+            .then((res) => (window.location = '/profile'))
             .catch((err) => console.error(err))
     }
 
@@ -46,6 +46,7 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="text" 
                             placeholder="Enter Firstname"
+                            name="firstname"
                             value={this.state.firstname}
                             onChange={this.onChangeValue}
                             required
@@ -56,6 +57,7 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="text" 
                             placeholder="Enter Lastname"
+                            name="lastname"
                             value={this.state.lastname}
                             onChange={this.onChangeValue}
                             required
@@ -66,6 +68,7 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="email" 
                             placeholder="Enter Email"
+                            name="email"
                             value={this.state.email}
                             onChange={this.onChangeValue}
                             required
@@ -76,6 +79,7 @@ export default class Signup extends Component {
                         <Form.Control 
                             type="password" 
                             placeholder="Enter Password"
+                            name="password"
                             value={this.state.password}
                             onChange={this.onChangeValue}
                             required
