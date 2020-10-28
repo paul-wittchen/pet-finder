@@ -32,7 +32,7 @@ export default class Signup extends Component {
         }
 
         axios
-            .post('http://localhost:8000/signup', user)
+            .post('/signup', user)
             .then((res) => (window.location = res.data.url))
             .catch((err) => console.error(err))
     }
