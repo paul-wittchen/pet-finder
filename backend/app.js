@@ -14,9 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Import Routes
 const authRoute = require('./routes/auth');
+const profileRoute = require('./routes/profile');
 
 // Use Routes
 app.use('/', authRoute);
+app.use('/profile', profileRoute)
 
 // MongoDB Connection
 const uri = process.env.ATLAS_URI;

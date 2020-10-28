@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import Cookies from 'js-cookie';
 
 export default class Navigation extends Component {
     constructor() {
         super()
 
         this.state = {
-            loading: true
+            loading: true,
+            loggedIn: false
         }
     }
 
     componentDidMount() {
         this.setState({
-            loading: false
+            loading: false,
+            loggedIn: Cookies.get('auth-token') !== undefined
+            
         })
     }
     render() {
+        console.log(this.state.loggedIn);
         if (!this.state.loading) {
             return(
                 <Navbar bg="dark" variant="dark">
@@ -25,9 +30,14 @@ export default class Navigation extends Component {
                     <Nav.Link href="/pets-list">All-pets</Nav.Link>
                     <Nav.Link href="/lost-pet">Lost-a-pet</Nav.Link>
                     <Nav.Link href="/found-pet">Found-a-pet</Nav.Link>
-                    <Nav.Link href="/profile">Profile</Nav.Link>
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/signup">Signup</Nav.Link>
+                    { this.state.loggedIn ? (
+                        <Nav.Link href="/profile">Profile</Nav.Link>
+                    ) : (
+                        <>
+                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav.Link href="/signup">Signup</Nav.Link>
+                        </>
+                    )}            
                     </Nav>
                 </Navbar>
             )

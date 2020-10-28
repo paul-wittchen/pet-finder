@@ -3,6 +3,7 @@ const userModel = require('../models/user.model');
 const { createUUID } = require('../utility');
 const { signupSchema, loginSchema } = require('../validation');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 router.post('/signup', async (req, res) => {
     // validate
@@ -27,7 +28,7 @@ router.post('/signup', async (req, res) => {
     });
     try {
         const savedUser = await user.save();
-        res.send({user: user.userUUID})
+        res.send({user: user.userUUID, status: true, url: "/login" })
     } catch (error) {
         console.log(error);
     }
@@ -35,19 +36,20 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     // validate
-    const {error} = loginSchema(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
+    const {error} = loginSchema(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
 
     // check email
     const user = await userModel.findOne({email: req.body.email});
-    if (!user) return res.status(400).send('Email doesnt exists')
+    if (!user) return res.status(400).send('Email doesnt exists');
 
     // compare password
-    const checkPwd = await bcrypt.compare(req.body.password, user.password)
-    if (!checkPwd) return res.status(400).send('Invalid password')
+    const checkPwd = await bcrypt.compare(req.body.password, user.password);
+    if (!checkPwd) return res.status(400).send('Invalid password');
 
-    res.send('Logged in')
-
+    // create token
+    const token = jwt.sign({ uuid: user.userUUID }, process.env.SECRET);
+    res.cookie('auth-token', token).send(token);
 })
 
 module.exports = router;
