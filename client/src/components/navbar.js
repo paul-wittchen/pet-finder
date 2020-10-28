@@ -20,7 +20,6 @@ export default class Navigation extends Component {
         })
     }
     render() {
-        console.log(this.state.loggedIn);
         if (!this.state.loading) {
             return(
                 <Navbar bg="dark" variant="dark">
