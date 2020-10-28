@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
-        uuid: {
+        userUUID: {
             type: String,
             required: true
         },

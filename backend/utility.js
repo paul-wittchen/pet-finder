@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const {v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcryptjs');
 
 const hash = (string) => {
     crypto.createHash('sha512').update(string).digest('hex');

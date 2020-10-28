@@ -8,8 +8,6 @@ export default class Signup extends Component {
 
         this.state = {
             loading: true,
-            firstname: '',
-            lastname: '',
             email: '',
             password: ''
         }
@@ -25,14 +23,12 @@ export default class Signup extends Component {
         event.preventDefault();
 
         const user = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
             email: this.state.email,
             password: this.state.password
         }
 
         axios
-            .post('/signup', user)
+            .post('/login', user)
             .then((res) => (window.location = '/profile'))
             .catch((err) => console.error(err))
     }
@@ -41,28 +37,6 @@ export default class Signup extends Component {
         return(
             <div className='container text-center'>
                 <Form onSubmit={this.onSubmit}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Firstname</Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            placeholder="Enter Firstname"
-                            name="firstname"
-                            value={this.state.firstname}
-                            onChange={this.onChangeValue}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Lastname</Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            placeholder="Enter Lastname"
-                            name="lastname"
-                            value={this.state.lastname}
-                            onChange={this.onChangeValue}
-                            required
-                        />
-                    </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control 
@@ -89,7 +63,7 @@ export default class Signup extends Component {
                         Signup
                     </Button>
                 </Form>
-                <p>Already a member?</p><a href="/login">Login</a>
+                <p>Not a member?</p><a href="/signup">Signup</a>
             </div>
         )
     }

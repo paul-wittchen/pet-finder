@@ -23,7 +23,7 @@ export default class Navigation extends Component {
                     <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/pets-list">All-pets</Nav.Link>
-                    <Nav.Link href="lost-pet">Lost-a-pet</Nav.Link>
+                    <Nav.Link href="/lost-pet">Lost-a-pet</Nav.Link>
                     <Nav.Link href="/found-pet">Found-a-pet</Nav.Link>
                     <Nav.Link href="/profile">Profile</Nav.Link>
                     <Nav.Link href="/login">Login</Nav.Link>
