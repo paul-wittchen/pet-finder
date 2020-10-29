@@ -2,7 +2,8 @@ const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
 // ROUTES
-const userRouter = require('./signup');
+const signupRouter = require('./signup');
+const loginRouter = require('./login');
 
 // DECODED
 router.use((req, res, next) => {
@@ -21,7 +22,8 @@ router.use((req, res, next) => {
 });
 
 // WITHOUT AUTHENTICATION
-router.use('/signup', userRouter);
+router.use('/signup', signupRouter);
+router.use('/login', loginRouter);
 
 // VERIFIES USER
 router.use((req, res, next) => {

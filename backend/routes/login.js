@@ -3,13 +3,14 @@ const userHelper = require('../helper/user.helper');
 
 router.post('/', (req, res) => {
     userHelper
-        .signup(
-            req.body.firstname,
-            req.body.lastname,
-            req.body.email,
-            req.body.password
-        )
-        .then(() => res.json({ status: true, url: "/login" }))
+        .login(req.body.email, req.body.password)
+        .then((token) => {
+            res.json({
+                status: true,
+                url: '/profile',
+                token
+            })
+        })
         .catch((error) => console.log(error))
 })
 

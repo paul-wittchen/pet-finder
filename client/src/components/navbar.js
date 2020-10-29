@@ -26,6 +26,8 @@ export default class Navigation extends Component {
                     <Nav.Link href="/pets-list">All-pets</Nav.Link>
                     <Nav.Link href="/lost-pet">Lost-a-pet</Nav.Link>
                     <Nav.Link href="/found-pet">Found-a-pet</Nav.Link>          
+                    <Nav.Link href="/signup">Signup</Nav.Link>
+                    <Nav.Link href="/login">Login</Nav.Link>   
                     </Nav>
                 </Navbar>
             )
