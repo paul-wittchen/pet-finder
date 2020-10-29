@@ -48,7 +48,10 @@ const login = (email, password) =>
         }
     })
 
+const read = (uuid) => userModel.findOne({ uuid })
+
 module.exports = {
     signup,
-    login
+    login,
+    read
 }

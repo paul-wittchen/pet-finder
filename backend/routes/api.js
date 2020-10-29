@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 // ROUTES
 const signupRouter = require('./signup');
 const loginRouter = require('./login');
+const profileRouter = require('./profile');
 
 // DECODED
 router.use((req, res, next) => {
@@ -12,9 +13,8 @@ router.use((req, res, next) => {
         jwt.verify(token, process.env.SECRET, (error, decoded) => {
             if (!error && decoded && decoded.userUUID) {
                 req.decoded = decoded
-            } else {
-                next();
-            };
+            }
+            next();
         })
     } else {
         next();
@@ -28,9 +28,9 @@ router.use('/login', loginRouter);
 // VERIFIES USER
 router.use((req, res, next) => {
     if (req.url.endsWith('/login')) {
-        if (req.method === 'POST') {
+        if (req.method == 'POST') {
             res.send('login')
-        } else if (res.method === 'GET'){
+        } else if (res.method == 'GET'){
             res.redirect('/login')
         }
     } else if (req.decoded && req.decoded.userUUID) {
@@ -39,5 +39,8 @@ router.use((req, res, next) => {
         res.json({ status: false, message: 'unathenticated' })
     }
 })
+
+// WITH AUTHENTICATION
+router.use('/profile', profileRouter);
 
 module.exports = router;

@@ -15,11 +15,9 @@ export default class Profile extends Component {
 
     componentDidMount() {
         axios
-            .post('/profile', { token: this.state.token })
+            .post('http://localhost:8000/profile', { token: this.state.token })
             .then((res) => {
-                this.setState({
-                    user: res.data.user
-                })
+                this.setState({ user: res.data.profile })
             })
             .catch((error) => console.log(error))
     }
@@ -31,7 +29,11 @@ export default class Profile extends Component {
 
     render() {
         return(
-            <a href="/" onClick={this.logout}>Logout</a>
+            <div>
+                <p>{this.state.user.firstname} {this.state.user.lastname}</p>
+                <a href="/" onClick={this.logout}>Logout</a>
+            </div>
+            
         )
     }
 }
