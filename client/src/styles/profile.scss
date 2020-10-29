@@ -1,5 +1,7 @@
+@import './vars';
+
 .profile__container {
-    padding: 24px 80px;
+    padding: 24px $big-spacing;
 }
 
 .profile__basic__row {
@@ -9,11 +11,13 @@
     margin: 0px auto;
 
     .profile__firstname {
-        font-size: 32px;
+        font-size: $header-font-size;
+        font-family: $header-font;
     }
     
     .profile__lastname {
-        font-size: 32px;
+        font-size: $header-font-size;
+        font-family: $header-font;
         margin-top: -24px;
     }
     
