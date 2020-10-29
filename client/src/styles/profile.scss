@@ -1,0 +1,21 @@
+.profile__container {
+    padding: 24px 80px;
+}
+
+.profile__basic__row {
+}
+
+.profile__firstname {
+    font-size: 32px;
+}
+
+.profile__lastname {
+    font-size: 32px;
+    margin-top: -24px;
+}
+
+.profile__pic {
+    width: 240px;
+    height: 320px;
+    object-fit: cover;
+}

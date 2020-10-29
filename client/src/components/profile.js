@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import '../styles/profile.scss';
+import { Row, Col } from 'react-bootstrap';
 
 export default class Profile extends Component {
     constructor() {
@@ -29,9 +31,18 @@ export default class Profile extends Component {
 
     render() {
         return(
-            <div>
-                <p>{this.state.user.firstname} {this.state.user.lastname}</p>
+            <div className='profile__container'>
                 <a href="/" onClick={this.logout}>Logout</a>
+                <Row className='profile__basic__row'>
+                    <Col>
+                        <img className='profile__pic' src="https://source.unsplash.com/random" alt="Profilepic"/>
+                        <p className='profile__firstname'>{this.state.user.firstname}</p>
+                        <p className='profile__lastname'>{this.state.user.lastname}</p>
+                    </Col>
+                    <Col>
+                    
+                    </Col>
+                </Row>
             </div>
             
         )
