@@ -32,14 +32,14 @@ export default class Profile extends Component {
     render() {
         return(
             <div className='profile__container'>
-                <a href="/" onClick={this.logout}>Logout</a>
                 <Row className='profile__basic__row'>
-                    <Col>
+                    <Col className='container__left'>
                         <img className='profile__pic' src="https://source.unsplash.com/random" alt="Profilepic"/>
                         <p className='profile__firstname'>{this.state.user.firstname}</p>
                         <p className='profile__lastname'>{this.state.user.lastname}</p>
+                        <a href="/" onClick={this.logout}>Logout</a>
                     </Col>
-                    <Col>
+                    <Col className='container__right'>
                     
                     </Col>
                 </Row>

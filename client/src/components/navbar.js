@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import Cookies from 'js-cookie';
+import '../styles/navbar.scss';
 
 export default class Navigation extends Component {
     constructor() {
@@ -21,7 +22,7 @@ export default class Navigation extends Component {
     render() {
         if (!this.state.loading) {
             return(
-                <Navbar bg="dark" variant="dark">
+                <Navbar className='navbar__main' bg="dark" variant="dark">
                     <Navbar.Brand href="/">Navbar</Navbar.Brand>
                     <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
