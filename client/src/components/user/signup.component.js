@@ -39,8 +39,8 @@ export default class Signup extends Component {
 
     render() {
         return(
-            <Row className='main__container__signup text-center'>
-                <Col className='signup__container__left'>
+            <Row className='main__container__signup justify-content-center text-center'>
+                <Col className='signup__container__left' lg={4}>
                     <p className='signup__header'>Create Account</p>
                     <p className='signup__subheader'>Already have an account? <a href="/login">Sign in</a></p>
                     <Form onSubmit={this.onSubmit}>
@@ -94,7 +94,7 @@ export default class Signup extends Component {
                         </Button>
                     </Form>
                 </Col>
-                <Col className='signup__container__right'>
+                <Col className='signup__container__right' lg={4}>
                     <img src={dog} alt="signup_picture"/>
                 </Col>
             </Row>
