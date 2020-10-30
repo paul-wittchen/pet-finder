@@ -12,6 +12,10 @@ const petSchema = new Schema(
             type: String,
             required: true
         },
+        petKind: {
+            type: String,
+            required: true
+        },
         petName: {
             type: String,
             required: true
@@ -26,6 +30,14 @@ const petSchema = new Schema(
             required: true
         },
         time: {
+            type: String,
+            required: true
+        },
+        date: {
+            type: String,
+            required: true
+        },
+        createdAt: {
             type: Date,
             default: Date.now
         },

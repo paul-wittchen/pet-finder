@@ -43,6 +43,6 @@ router.use((req, res, next) => {
 
 // WITH AUTHENTICATION
 router.use('/profile', profileRouter);
-router.use('/lostapet', createPetRouter);
+router.use('/lost-pet', createPetRouter);
 
 module.exports = router;

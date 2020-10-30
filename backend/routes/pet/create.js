@@ -5,10 +5,13 @@ router.post('/', (req, res) => {
     petHelper
         .create(
             req.decoded.userUUID,
+            req.body.petKind,
             req.body.petName,
             req.body.description,
             req.body.location,
             req.body.time,
+            req.body.date,
+            req.body.createdAt,
             req.body.reward
         )
         .then(() => res.json({ status: true, url: '/'}))
