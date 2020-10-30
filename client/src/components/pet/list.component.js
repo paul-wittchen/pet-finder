@@ -13,7 +13,7 @@ export default class ListPets extends Component {
 
     componentDidMount() {
         axios
-            .post('http://localhost:8000/pets-list')
+            .get('http://localhost:8000/pets-list')
             .then((res) => {
                 this.setState({
                     pets: res.data.pets
@@ -23,10 +23,13 @@ export default class ListPets extends Component {
     }
 
     render() {
-        console.log(this.state);
+        console.log(this.state.pets[0]);
         return(
             <div>
                 <h1>List all pets</h1>
+                {this.state.pets.map(pet => 
+                    <h1>{pet.petName}</h1>
+                    )}
             </div>
         )
     }
