@@ -14,17 +14,16 @@
         font-size: $header-font-size;
         font-family: $header-font;
     }
-    
+
     .profile__lastname {
         font-size: $header-font-size;
         font-family: $header-font;
         margin-top: -24px;
     }
-    
+
     .profile__pic {
         width: 240px;
         height: 320px;
         object-fit: cover;
     }
-
 }

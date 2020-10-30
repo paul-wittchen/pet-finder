@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import '../styles/profile.scss';
+import '../../styles/profile.scss';
 import { Row, Col } from 'react-bootstrap';
 
 export default class Profile extends Component {

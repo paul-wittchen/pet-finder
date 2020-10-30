@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userHelper = require('../helper/user.helper');
+const userHelper = require('../../helper/user.helper');
 
 router.use('/', (req, res) => {
     userHelper

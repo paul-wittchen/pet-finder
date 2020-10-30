@@ -2,9 +2,10 @@ const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 
 // ROUTES
-const signupRouter = require('./signup');
-const loginRouter = require('./login');
-const profileRouter = require('./profile');
+const signupRouter = require('./user/signup');
+const loginRouter = require('./user/login');
+const profileRouter = require('./user/profile');
+const createPetRouter = require('./pet/create');
 
 // DECODED
 router.use((req, res, next) => {
@@ -42,5 +43,6 @@ router.use((req, res, next) => {
 
 // WITH AUTHENTICATION
 router.use('/profile', profileRouter);
+router.use('/lostapet', createPetRouter);
 
 module.exports = router;
