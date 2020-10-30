@@ -6,6 +6,7 @@ const signupRouter = require('./user/signup');
 const loginRouter = require('./user/login');
 const profileRouter = require('./user/profile');
 const createPetRouter = require('./pet/create');
+const listPetsRouter = require('./pet/list');
 
 // DECODED
 router.use((req, res, next) => {
@@ -25,6 +26,7 @@ router.use((req, res, next) => {
 // WITHOUT AUTHENTICATION
 router.use('/signup', signupRouter);
 router.use('/login', loginRouter);
+router.use('/pets-list', listPetsRouter);
 
 // VERIFIES USER
 router.use((req, res, next) => {

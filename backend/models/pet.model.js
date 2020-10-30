@@ -14,19 +14,23 @@ const petSchema = new Schema(
         },
         petKind: {
             type: String,
+            trim: true,
             required: true
         },
         petName: {
             type: String,
+            trim: true,
             required: true
         },
         description: {
             type: String,
+            trim: true,
             required: true,
             minlength: 10
         },
         location: {
             type: String,
+            trim: true,
             required: true
         },
         time: {
@@ -42,7 +46,8 @@ const petSchema = new Schema(
             default: Date.now
         },
         reward: {
-            type: String
+            type: String,
+            trim: true
         }
     },
     {
