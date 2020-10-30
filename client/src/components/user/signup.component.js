@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import '../../styles/signup.scss';
-import dog from '../../images/signup_pic.png';
+import dog from '../../images/signup.png';
 
 export default class Signup extends Component {
     constructor() {
@@ -67,9 +67,7 @@ export default class Signup extends Component {
                             />
                         </Form.Group>
                             </Col>
-                        </Row>
-                        
-                        
+                        </Row>    
                         <Form.Group controlId="email">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control 

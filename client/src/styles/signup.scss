@@ -2,7 +2,7 @@
 
 .signup__container__left {
     margin-left: $big-spacing;
-    margin-top: $big-spacing;
+    margin-top: 120px;
     .signup__header {
         font-family: $header-font;
         font-size: $header-font-size;
@@ -25,5 +25,6 @@
     img {
         height: 100%;
         width: 100%;
+        object-fit: cover;
     }
 }
