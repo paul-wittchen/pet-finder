@@ -1,0 +1,29 @@
+@import './vars';
+
+.signup__container__left {
+    margin-left: $big-spacing;
+    margin-top: $big-spacing;
+    .signup__header {
+        font-family: $header-font;
+        font-size: $header-font-size;
+    }
+    .signup__subheader {
+        font-family: $text-font;
+        font-size: $text-font-size;
+    }
+    label {
+        font-family: $text-font;
+    }
+    input {
+        font-family: $text-font;
+        font-weight: bold;
+    }
+}
+
+.signup__container__right {
+    margin-right: $big-spacing;
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
