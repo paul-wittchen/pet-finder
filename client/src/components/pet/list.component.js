@@ -39,6 +39,7 @@ export default class ListPets extends Component {
                                 time={pet.time}
                                 date={pet.date}
                                 reward={pet.reward}
+                                createdAt={pet.createdAt}
                                 key={pet.createdAt}
                             />
                         )}
