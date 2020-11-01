@@ -21,11 +21,17 @@
     input {
         font-family: $text-font;
         font-weight: bold;
+        border: none;
+        background-color: #F3F3F3;
+        &:focus {
+            background-color: #F3F3F3;
+        }
     }
 }
 
 .signup__container__right {
     margin-right: $big-spacing;
+    margin-top: $big-spacing;
     img {
         height: 100%;
         width: 100%;
