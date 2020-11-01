@@ -12,13 +12,22 @@ export default class Signup extends Component {
             firstname: '',
             lastname: '',
             email: '',
-            password: ''
+            password: '',
+            isChecked: false
         }
     }
 
     onChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
+        })
+    }
+
+    termsCheckChange = () => {
+        this.setState(prevState => {
+            return {
+                isChecked: !prevState.isChecked
+            }
         })
     }
 
@@ -32,9 +41,13 @@ export default class Signup extends Component {
             password: this.state.password
         }
 
-        axios
+        if (this.state.isChecked) {
+            axios
             .post('http://localhost:8000/signup', user)
             .then((res) => window.location = res.data.url)
+        } else {
+            alert('Please agree to our terms')
+        }
     }
 
     render() {
@@ -87,7 +100,12 @@ export default class Signup extends Component {
                             />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="I agree to the Terms of Service and Privacy Policy" />
+                            <Form.Check 
+                                type="checkbox" 
+                                label="I agree to the Terms of Service and Privacy Policy"
+                                checked={this.state.isChecked}
+                                onChange={this.termsCheckChange}
+                            />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Sign up
