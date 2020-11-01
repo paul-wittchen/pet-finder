@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PetCard from './petCard.component';
+import '../../styles/petsList.scss';
+import { Row, Col } from 'react-bootstrap';
 
 export default class ListPets extends Component {
     constructor() {
@@ -23,13 +26,24 @@ export default class ListPets extends Component {
     }
 
     render() {
-        console.log(this.state.pets[0]);
         return(
-            <div>
-                <h1>List all pets</h1>
-                {this.state.pets.map(pet => 
-                    <h1>{pet.petName}</h1>
-                    )}
+            <div className='pets__list__container'>
+                <p className='pets__list__header'>List all pets</p>
+                <Row>
+                    <Col>
+                        {this.state.pets.map(pet => 
+                            <PetCard
+                                petName={pet.petName}
+                                petKind={pet.petKind}
+                                description={pet.description}
+                                location={pet.location}
+                                time={pet.time}
+                                date={pet.date}
+                                reward={pet.reward}
+                            />
+                        )}
+                    </Col>
+                </Row>
             </div>
         )
     }
