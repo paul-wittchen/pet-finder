@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PetCard from './petCard.component';
 import '../../styles/petsList.scss';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 export default class ListPets extends Component {
     constructor() {
@@ -29,8 +29,7 @@ export default class ListPets extends Component {
         return(
             <div className='pets__list__container'>
                 <p className='pets__list__header'>List all pets</p>
-                <Row>
-                    <Col>
+                <Row lg={4} md={2} sm={1} className='justify-content-center'>
                         {this.state.pets.map(pet => 
                             <PetCard
                                 petName={pet.petName}
@@ -40,9 +39,9 @@ export default class ListPets extends Component {
                                 time={pet.time}
                                 date={pet.date}
                                 reward={pet.reward}
+                                key={pet.createdAt}
                             />
                         )}
-                    </Col>
                 </Row>
             </div>
         )

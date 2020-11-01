@@ -12,7 +12,6 @@ export default class CreatePet extends Component {
             petKind: '',
             description: '',
             location: '',
-            time: '',
             date:'',
             reward: ''
         }
@@ -32,7 +31,6 @@ export default class CreatePet extends Component {
             petKind: this.state.petKind,
             description: this.state.description,
             location: this.state.location,
-            time: this.state.time,
             date: this.state.date,
             reward: this.state.reward,
             token: Cookies.get('token')
@@ -75,23 +73,14 @@ export default class CreatePet extends Component {
                         onChange={this.onChange}
                     />
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='location'
-                        value={this.state.location}
-                        onChange={this.onChange}
-                    />
-                </Form.Group>
                 <Row>
                     <Col>
                         <Form.Group>
-                            <Form.Label>When have you seen your pet the last time? *</Form.Label>
+                            <Form.Label>Where have you seen your pet the last time? *</Form.Label>
                             <Form.Control
-                                type='time'
-                                name='time'
-                                value={this.state.time}
+                                type='text'
+                                name='location'
+                                value={this.state.location}
                                 onChange={this.onChange}
                             />
                         </Form.Group>
