@@ -1,0 +1,11 @@
+@import './vars';
+
+.pets__list__container {
+    padding: 24px $big-spacing;
+}
+
+.pets__list__header {
+    text-align: center;
+    font-family: $header-font;
+    font-size: $header-font-size;
+}

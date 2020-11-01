@@ -25,8 +25,7 @@ const petSchema = new Schema(
         description: {
             type: String,
             trim: true,
-            required: true,
-            minlength: 10
+            required: true
         },
         location: {
             type: String,
