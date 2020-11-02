@@ -3,6 +3,7 @@ import { Card, Button, Spinner } from 'react-bootstrap';
 import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
 import PhoneModal from './phoneModal.component';
+import MessageModal from './msgModal.component';
 
 export default class PetCard extends Component {
     constructor(props) {
@@ -10,7 +11,8 @@ export default class PetCard extends Component {
 
         this.state = {
             loading: true,
-            isOpen: false
+            isOpenPhone: false,
+            isOpenMsg: false
         }
     }
 
@@ -20,8 +22,11 @@ export default class PetCard extends Component {
         })
     }
 
-    openModal = () => {this.setState({ isOpen: true })}
-    closeModal = () => {this.setState({ isOpen: false })}
+    openModalPhone = () => {this.setState({ isOpenPhone: true })}
+    closeModalPhone = () => {this.setState({ isOpenPhone: false })}
+
+    openModalMsg = () => {this.setState({ isOpenMsg: true })}
+    closeModalMsg = () => {this.setState({ isOpenMsg: false })}
 
     render() {
         if (!this.state.loading) {
@@ -45,17 +50,23 @@ export default class PetCard extends Component {
                     <Card.Footer>
                         <Button className='pet__card__btn'><i className="fas fa-info-circle"></i> Details</Button>
                         {this.props.contact.includes('@') ? (
-                            <Button className='pet__card__btn'><i className="far fa-envelope"></i> Message</Button>
+                            <Button className='pet__card__btn' onClick={this.openModalMsg}><i className="far fa-envelope"></i> Message</Button>
                         ) : (
-                            <Button className='pet__card__btn' onClick={this.openModal}><i className="fas fa-phone-alt"></i> Call</Button>
+                            <Button className='pet__card__btn' onClick={this.openModalPhone}><i className="fas fa-phone-alt"></i> Call</Button>
                         )}
                     </Card.Footer>
                 </Card>
                 <PhoneModal
                     petName={this.props.petName}
                     phone={this.props.contact}
-                    closeModal={this.closeModal}
-                    open={this.state.isOpen}
+                    closeModalPhone={this.closeModalPhone}
+                    open={this.state.isOpenPhone}
+                />
+                <MessageModal
+                    petName={this.props.petName}
+                    mail={this.props.contact}
+                    closeModalMsg={this.closeModalMsg}
+                    open={this.state.isOpenMsg}
                 />
                 </>
             )
