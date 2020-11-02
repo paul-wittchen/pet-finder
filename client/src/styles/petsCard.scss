@@ -1,19 +1,53 @@
 @import './vars';
 
-.pets__card {
+.pet__card {
     border: none !important;
     box-shadow: 0px 0px 10px 5px rgb(241, 241, 241);
     margin: 16px 16px;
     border-radius: 24px !important;
 
     img {
-        border-radius: 24px 24px 160px 0px !important;
+        border-radius: 24px 24px 0px 0px !important;
+    }
+    .pet__card__tag {
+        background-color: $second-color;
+        border-radius: 24px;
+        max-width: 24%;
+        text-align: center;
+        padding: 8px;
+        margin-top: -48px;
+        margin-left: 8px;
+        opacity: .9;
+        font-family: $text-font;
+    }
+    .card-title {
+        font-family: $header-font;
+        font-size: $subheader-font-size;
+        text-align: center;
+    }
+    .pet__card__time {
+        text-align: center !important;
+        font-family: $text-font;
+        margin-top: -12px;
+        margin-bottom: 24px;
+        color: rgba(0, 0, 0, 0.438);
+        font-size: 14px;
+    }
+    .pet__card__desc {
+        font-family: $text-font;
+        font-size: $text-font-size;
+    }
+    .pet__card__location {
+        font-family: $text-font;
+        font-size: $text-font-size;
+    }
+    .pet__card__date {
+        font-family: $text-font;
+        font-size: $text-font-size;
     }
     .card-footer {
         border-radius: 0px 0px 24px 24px !important;
         border-top: none;
         text-align: center;
-        font-family: $text-font;
-        font-size: 12px;
     }
 }
