@@ -39,6 +39,11 @@ const petSchema = new Schema(
         reward: {
             type: String,
             trim: true
+        },
+        contact: {
+            type: String,
+            trim: true,
+            required: true
         }
     },
     {
