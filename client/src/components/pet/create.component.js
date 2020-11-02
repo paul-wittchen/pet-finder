@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import ImageUploader from 'react-images-upload';
@@ -67,26 +67,34 @@ export default class CreatePet extends Component {
                     withPreview={true}
                     singleImage={true}
                 />
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Whats the name of your pet? *</Form.Label>
-                    <Form.Control 
-                        type="text" 
-                        name='petName'
-                        value={this.state.petName}
-                        onChange={this.onChange}
-                        required
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>What kind of pet, have you lost? *</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='petKind'
-                        value={this.state.petKind}
-                        onChange={this.onChange}
-                        required
-                    />
-                </Form.Group>
+                <Row>
+                    <Col>
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Whats the name of your pet? *</Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name='petName'
+                                value={this.state.petName}
+                                onChange={this.onChange}
+                                required
+                                placeholder='e.g. Fluffy'
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>What kind of pet, have you lost? *</Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='petKind'
+                                value={this.state.petKind}
+                                onChange={this.onChange}
+                                required
+                                placeholder='e.g. Dog'
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Describe your pet! *</Form.Label>
                     <Form.Control 
@@ -99,25 +107,33 @@ export default class CreatePet extends Component {
                         required
                     />
                 </Form.Group>
-                <Form.Group>
-                    <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='location'
-                        value={this.state.location}
-                        onChange={this.onChange}
-                        required
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Is there a reward for the founder? (optional)</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='reward'
-                        value={this.state.reward}
-                        onChange={this.onChange}
-                    />
-                </Form.Group>
+                <Row>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>Where have you seen your pet the last time? *</Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='location'
+                                value={this.state.location}
+                                onChange={this.onChange}
+                                required
+                                placeholder='e.g. In the parc nearby ...'
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>Is there a reward for the founder? (optional)</Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='reward'
+                                value={this.state.reward}
+                                onChange={this.onChange}
+                                placeholder='e.g. 100$'
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
                 <Form.Group>
                     <Form.Label>How should people contact you?</Form.Label>
                     <Form.Control
@@ -125,6 +141,7 @@ export default class CreatePet extends Component {
                         name='contact'
                         value={this.state.contact}
                         onChange={this.onChange}
+                        placeholder='Tel / Email'
                         required
                     />
                 </Form.Group>
