@@ -49,5 +49,13 @@
         border-radius: 0px 0px 24px 24px !important;
         border-top: none;
         text-align: center;
+        .pet__card__btn {
+            background-color: $primary-color;
+            border: none;
+            border-radius: 16px;
+            padding: 8px 16px;
+            margin: 0px 8px;
+            font-family: $text-font;
+        }
     }
 }

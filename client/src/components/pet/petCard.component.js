@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Spinner, Row, Col } from 'react-bootstrap';
+import { Card, Button, Spinner } from 'react-bootstrap';
 import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
 
@@ -33,12 +33,12 @@ export default class PetCard extends Component {
                             {this.props.description}
                         </Card.Text>
                         <Card.Text className='pet__card__location text-center'>
-                            <i class="fas fa-map-marker-alt"></i> {this.props.location}
+                            <i className="fas fa-map-marker-alt"></i> {this.props.location}
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button variant="primary">Details</Button>
-                        <Button variant="primary">Message</Button>
+                        <Button className='pet__card__btn'><i className="fas fa-info-circle"></i> Details</Button>
+                        <Button className='pet__card__btn'><i className="far fa-envelope"></i> Message</Button>
                     </Card.Footer>
                 </Card>
             )
