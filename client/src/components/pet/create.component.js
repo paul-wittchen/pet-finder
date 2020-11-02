@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import ImageUploader from 'react-images-upload';
 
 export default class CreatePet extends Component {
     constructor() {
@@ -9,6 +10,7 @@ export default class CreatePet extends Component {
 
         this.state = {
             petName: '',
+            image: [],
             petKind: '',
             description: '',
             location: '',
@@ -23,11 +25,22 @@ export default class CreatePet extends Component {
         })
     }
 
+    onDrop = (picture) => {
+        this.setState({
+            image: this.state.image.concat(picture),
+        });
+    }
+
     onSubmit = (event) => {
+        console.log(this.state.image);
         event.preventDefault();
+
+        const data = new FormData();
+        data.append('image', this.state.image, this.state.image.name)
 
         const pet = {
             petName: this.state.petName,
+            image: data,
             petKind: this.state.petKind,
             description: this.state.description,
             location: this.state.location,
@@ -45,6 +58,15 @@ export default class CreatePet extends Component {
     render() {
         return(
             <Form onSubmit={this.onSubmit}>
+                <ImageUploader
+                    withIcon={true}
+                    buttonText='Select image'
+                    onChange={this.onDrop}
+                    imgExtension={['.jpg', '.png', '.gif']}
+                    maxFileSize={5242880}
+                    withPreview={true}
+                    singleImage={true}
+                />
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Whats the name of your pet? *</Form.Label>
                     <Form.Control 

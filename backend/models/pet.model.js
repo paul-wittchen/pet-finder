@@ -12,6 +12,9 @@ const petSchema = new Schema(
             type: String,
             required: true
         },
+        image: {
+            type: Array
+        },
         petKind: {
             type: String,
             trim: true,

@@ -5,6 +5,7 @@ router.post('/', (req, res) => {
     petHelper
         .create(
             req.decoded.userUUID,
+            req.decoded.image,
             req.body.petKind,
             req.body.petName,
             req.body.description,
