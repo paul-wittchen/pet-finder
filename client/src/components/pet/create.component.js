@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -12,7 +12,8 @@ export default class CreatePet extends Component {
             petKind: '',
             description: '',
             location: '',
-            reward: ''
+            reward: '',
+            contact: ''
         }
     }
 
@@ -32,6 +33,7 @@ export default class CreatePet extends Component {
             location: this.state.location,
             date: this.state.date,
             reward: this.state.reward,
+            contact: this.state.contact,
             token: Cookies.get('token')
         }
 
@@ -50,6 +52,7 @@ export default class CreatePet extends Component {
                         name='petName'
                         value={this.state.petName}
                         onChange={this.onChange}
+                        required
                     />
                 </Form.Group>
                 <Form.Group>
@@ -59,6 +62,7 @@ export default class CreatePet extends Component {
                         name='petKind'
                         value={this.state.petKind}
                         onChange={this.onChange}
+                        required
                     />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -70,6 +74,7 @@ export default class CreatePet extends Component {
                         placeholder='How does your pet look like? Is it shy? Is it aggressive? etc.'
                         value={this.state.description}
                         onChange={this.onChange}
+                        required
                     />
                 </Form.Group>
                 <Form.Group>
@@ -79,6 +84,7 @@ export default class CreatePet extends Component {
                         name='location'
                         value={this.state.location}
                         onChange={this.onChange}
+                        required
                     />
                 </Form.Group>
                 <Form.Group>
@@ -88,6 +94,16 @@ export default class CreatePet extends Component {
                         name='reward'
                         value={this.state.reward}
                         onChange={this.onChange}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>How should people contact you?</Form.Label>
+                    <Form.Control
+                        type='text'
+                        name='contact'
+                        value={this.state.contact}
+                        onChange={this.onChange}
+                        required
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">

@@ -1,7 +1,7 @@
 const petModel = require('../models/pet.model');
 const { createUUID } = require('../utility');
 
-const create = (userUUID, petKind, petName, description, location, createdAt, reward) => {
+const create = (userUUID, petKind, petName, description, location, createdAt, reward, contact) => {
     return petModel.create({
         uuid: createUUID(),
         userUUID,
@@ -10,7 +10,8 @@ const create = (userUUID, petKind, petName, description, location, createdAt, re
         description,
         location,
         createdAt,
-        reward
+        reward,
+        contact
     })
 }
 

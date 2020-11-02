@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Card, Button, Spinner } from 'react-bootstrap';
 import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
+import PhoneModal from './phoneModal.component';
 
 export default class PetCard extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            loading: true
+            loading: true,
+            isOpen: false
         }
     }
 
@@ -18,9 +20,13 @@ export default class PetCard extends Component {
         })
     }
 
+    openModal = () => {this.setState({ isOpen: true })}
+    closeModal = () => {this.setState({ isOpen: false })}
+
     render() {
         if (!this.state.loading) {
             return(
+                <>
                 <Card className='pet__card'>
                     <Card.Img variant="top" src="https://source.unsplash.com/user/adventure_yuki/240x240" />
                     <div className='pet__card__tag'>{this.props.petKind}</div>
@@ -38,9 +44,20 @@ export default class PetCard extends Component {
                     </Card.Body>
                     <Card.Footer>
                         <Button className='pet__card__btn'><i className="fas fa-info-circle"></i> Details</Button>
-                        <Button className='pet__card__btn'><i className="far fa-envelope"></i> Message</Button>
+                        {this.props.contact.includes('@') ? (
+                            <Button className='pet__card__btn'><i className="far fa-envelope"></i> Message</Button>
+                        ) : (
+                            <Button className='pet__card__btn' onClick={this.openModal}><i className="fas fa-phone-alt"></i> Call</Button>
+                        )}
                     </Card.Footer>
                 </Card>
+                <PhoneModal
+                    petName={this.props.petName}
+                    phone={this.props.contact}
+                    closeModal={this.closeModal}
+                    open={this.state.isOpen}
+                />
+                </>
             )
         } else {
             return(
