@@ -12,7 +12,6 @@ export default class CreatePet extends Component {
             petKind: '',
             description: '',
             location: '',
-            date:'',
             reward: ''
         }
     }
@@ -73,30 +72,15 @@ export default class CreatePet extends Component {
                         onChange={this.onChange}
                     />
                 </Form.Group>
-                <Row>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                            <Form.Control
-                                type='text'
-                                name='location'
-                                value={this.state.location}
-                                onChange={this.onChange}
-                            />
-                        </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>When have you seen your pet the last time? *</Form.Label>
-                            <Form.Control
-                                type='date'
-                                name='date'
-                                value={this.state.date}
-                                onChange={this.onChange}
-                            />
-                        </Form.Group>
-                    </Col>
-                </Row>
+                <Form.Group>
+                    <Form.Label>Where have you seen your pet the last time? *</Form.Label>
+                    <Form.Control
+                        type='text'
+                        name='location'
+                        value={this.state.location}
+                        onChange={this.onChange}
+                    />
+                </Form.Group>
                 <Form.Group>
                     <Form.Label>Is there a reward for the founder? (optional)</Form.Label>
                     <Form.Control
