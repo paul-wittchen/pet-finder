@@ -4,7 +4,6 @@ import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
 import PhoneModal from './phoneModal.component';
 import MessageModal from './msgModal.component';
-import { Link } from 'react-router-dom';
 
 export default class PetCard extends Component {
     constructor(props) {

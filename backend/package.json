@@ -25,6 +25,7 @@
     "multer-s3": "^2.9.0",
     "multiparty": "^4.2.2",
     "nodemon": "^2.0.6",
+    "places.js": "^1.19.0",
     "uuid": "^8.3.1"
   }
 }

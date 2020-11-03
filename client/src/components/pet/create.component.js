@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import '../../styles/createPet.scss';
 import ImageUploader from 'react-images-upload';
+import AlgoliaPlaces from 'algolia-places-react';
 
 export default class CreatePet extends Component {
     constructor() {
@@ -57,7 +58,6 @@ export default class CreatePet extends Component {
     }
 
     render() {
-        console.log(this.state.image[0]);
         return(
             <Form onSubmit={this.onSubmit}>
                 <ImageUploader
@@ -113,13 +113,8 @@ export default class CreatePet extends Component {
                     <Col>
                         <Form.Group>
                             <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                            <Form.Control
-                                type='text'
-                                name='location'
-                                value={this.state.location}
-                                onChange={this.onChange}
-                                required
-                                placeholder='e.g. In the parc nearby ...'
+                            <AlgoliaPlaces
+                                placeholder='Write an address here'
                             />
                         </Form.Group>
                     </Col>
