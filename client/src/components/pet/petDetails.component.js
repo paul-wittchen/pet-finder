@@ -26,7 +26,7 @@ export default class PetDetails extends Component {
             <div className='pet__details__container'>
                 <Row className='pet__details__row'>
                     <Col className='pet__details__left'>
-                        <img src="https://source.unsplash.com/user/adventure_yuki/640x400" alt=""/>
+                        <img src={this.state.petData.image} alt=""/>
                     </Col>
                     <Col className='pet__details__right'>
                         <p className='pet__details__name'>{this.state.petData.petName}</p>

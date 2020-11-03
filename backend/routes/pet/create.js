@@ -1,8 +1,5 @@
 const router = require('express').Router();
 const petHelper = require('../../helper/pet.helper');
-const fs = require('fs');
-const fileType = require('file-type');
-const multiparty = require('multiparty');
 
 router.post('/', (req, res) => {
     petHelper

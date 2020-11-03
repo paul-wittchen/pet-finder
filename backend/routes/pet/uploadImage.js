@@ -17,9 +17,9 @@ router.post('/', (req, res) => {
         multiples: false
      });
  
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            console.log(err);
+    form.parse(req, (error, fields, files) => {
+        if (error) {
+            console.log(error);
             res.json({status: false})
         } else {
             jwt.verify(fields.token, process.env.SECRET, (error, decoded) => {
@@ -31,14 +31,13 @@ router.post('/', (req, res) => {
                         Key: createUUID() + path.extname(files.image.name),
                         Body: fs.createReadStream(files.image.path)
                     };
-                    s3.upload(params, (err, data) => {
-                        if (err) {
+                    s3.upload(params, (error, data) => {
+                        if (error) {
                             fs.unlinkSync(files.image.path)
-                            throw err;
+                            throw error;
                         } else {
                             fs.unlinkSync(files.image.path)
                             res.json({status: true, imageURL: data.Location})
-                            console.log(fields); // fields are interesting for authentication
                         }
                     });
                 } else {
@@ -46,8 +45,6 @@ router.post('/', (req, res) => {
                     console.log("fail");
                 }
             })
-
-            
         }
     });
 });

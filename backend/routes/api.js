@@ -28,8 +28,7 @@ router.use((req, res, next) => {
 router.use('/signup', signupRouter);
 router.use('/login', loginRouter);
 router.use('/pets-list', listPetsRouter);
-// should be authenticated -> not the right place yet
-
+router.use('/upload-pet-image', uploadPetImageRouter)
 
 // VERIFIES USER
 router.use((req, res, next) => {
@@ -49,6 +48,5 @@ router.use((req, res, next) => {
 // WITH AUTHENTICATION
 router.use('/profile', profileRouter);
 router.use('/lost-pet', createPetRouter);
-router.use('/upload-pet-image', uploadPetImageRouter)
 
 module.exports = router;

@@ -27,6 +27,12 @@ export default class CreatePet extends Component {
         })
     }
 
+    handleAlgoliaChange = (query) => {
+        this.setState({
+            location: query.suggestion.name
+        })
+    }
+
     onDrop = (picture) => {
         this.setState({
             image: this.state.image.concat(picture),
@@ -34,7 +40,6 @@ export default class CreatePet extends Component {
     }
 
     onSubmit = (event) => {
-        console.log(this.state.image);
         event.preventDefault();
 
         const data = new FormData();
@@ -45,16 +50,14 @@ export default class CreatePet extends Component {
             headers: {
               'accept': 'application/json',
               'Accept-Language': 'en-US,en;q=0.8',
-              'Content-Type': `multipart/form-data`,
+              'Content-Type': `multipart/form-data`
             }
           })
           .then(res => {
-            if(res.data.status) {
-                const image = res.data.imageURL
-
+            if(res.data.status) {                
                 const pet = {
                     petName: this.state.petName,
-                    image,
+                    image: res.data.imageURL,
                     petKind: this.state.petKind,
                     description: this.state.description,
                     location: this.state.location,
@@ -71,14 +74,13 @@ export default class CreatePet extends Component {
                 console.log('request failed');
             }
           })
-          .catch(err => {
-              console.log(err);
+          .catch(error => {
+              console.log(error);
           })
-
-
     }
 
     render() {
+        console.log(this.state.location);
         return(
             <Form onSubmit={this.onSubmit}>
                 <ImageUploader
@@ -135,7 +137,8 @@ export default class CreatePet extends Component {
                         <Form.Group>
                             <Form.Label>Where have you seen your pet the last time? *</Form.Label>
                             <AlgoliaPlaces
-                                placeholder='Write an address here'
+                                placeholder='location'
+                                onChange={this.handleAlgoliaChange}
                             />
                         </Form.Group>
                     </Col>

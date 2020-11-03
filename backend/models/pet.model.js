@@ -31,8 +31,7 @@ const petSchema = new Schema(
             required: true
         },
         location: {
-            type: String,
-            trim: true
+            type: String
         },
         createdAt: {
             type: Date,
