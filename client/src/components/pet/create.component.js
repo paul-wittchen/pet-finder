@@ -16,6 +16,8 @@ export default class CreatePet extends Component {
             petKind: '',
             description: '',
             location: '',
+            lat: 0.0,
+            lon: 0.0,
             reward: '',
             contact: ''
         }
@@ -29,7 +31,9 @@ export default class CreatePet extends Component {
 
     handleAlgoliaChange = (query) => {
         this.setState({
-            location: query.suggestion.name
+            location: `${query.suggestion.name}, ${query.suggestion.city}`,
+            lat: query.suggestion.latlng.lat,
+            lon: query.suggestion.latlng.lng
         })
     }
 
@@ -61,6 +65,8 @@ export default class CreatePet extends Component {
                     petKind: this.state.petKind,
                     description: this.state.description,
                     location: this.state.location,
+                    lat: this.state.lat,
+                    lon: this.state.lon,
                     date: this.state.date,
                     reward: this.state.reward,
                     contact: this.state.contact,

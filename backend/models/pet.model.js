@@ -33,6 +33,12 @@ const petSchema = new Schema(
         location: {
             type: String
         },
+        lat: {
+            type: Number
+        },
+        lon: {
+            type: Number
+        },
         createdAt: {
             type: Date,
             default: Date.now
