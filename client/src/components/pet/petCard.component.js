@@ -33,7 +33,7 @@ export default class PetCard extends Component {
             return(
                 <>
                 <Card className='pet__card'>
-                    <Card.Img variant="top" src="https://source.unsplash.com/user/adventure_yuki/400x240" />
+                    <Card.Img variant="top" src={this.props.imageURL} />
                     <div className='pet__card__tag'>{this.props.petKind}</div>
                     <Card.Body>
                         <Card.Title>{this.props.petName}</Card.Title>

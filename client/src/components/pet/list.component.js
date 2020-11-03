@@ -33,6 +33,7 @@ export default class ListPets extends Component {
                         {this.state.pets.map(pet => 
                             <PetCard
                                 uuid={pet.uuid}
+                                imageURL={pet.image}
                                 petName={pet.petName}
                                 petKind={pet.petKind}
                                 description={pet.description}

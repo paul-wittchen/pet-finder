@@ -6,6 +6,7 @@ const signupRouter = require('./user/signup');
 const loginRouter = require('./user/login');
 const profileRouter = require('./user/profile');
 const createPetRouter = require('./pet/create');
+const uploadPetImageRouter = require(('./pet/uploadImage'))
 const listPetsRouter = require('./pet/list');
 
 // DECODED
@@ -27,6 +28,8 @@ router.use((req, res, next) => {
 router.use('/signup', signupRouter);
 router.use('/login', loginRouter);
 router.use('/pets-list', listPetsRouter);
+// should be authenticated -> not the right place yet
+router.use('/upload-pet-image', uploadPetImageRouter)
 
 // VERIFIES USER
 router.use((req, res, next) => {

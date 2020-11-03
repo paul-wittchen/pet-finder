@@ -38,23 +38,44 @@ export default class CreatePet extends Component {
         event.preventDefault();
 
         const data = new FormData();
-        data.append('image', this.state.image[0].name)
+        data.append('image', this.state.image[0], this.state.image[0].name)
+        data.append('token', Cookies.get('token'))
 
-        const pet = {
-            petName: this.state.petName,
-            image: data,
-            petKind: this.state.petKind,
-            description: this.state.description,
-            location: this.state.location,
-            date: this.state.date,
-            reward: this.state.reward,
-            contact: this.state.contact,
-            token: Cookies.get('token')
-        }
+        axios.post('http://localhost:8000/upload-pet-image', data, {
+            headers: {
+              'accept': 'application/json',
+              'Accept-Language': 'en-US,en;q=0.8',
+              'Content-Type': `multipart/form-data`,
+            }
+          })
+          .then(res => {
+            if(res.data.status) {
+                const image = res.data.imageURL
 
-        axios
-            .post('http://localhost:8000/lost-pet', pet)
-            .then((res) => window.location = res.data.url)
+                const pet = {
+                    petName: this.state.petName,
+                    image,
+                    petKind: this.state.petKind,
+                    description: this.state.description,
+                    location: this.state.location,
+                    date: this.state.date,
+                    reward: this.state.reward,
+                    contact: this.state.contact,
+                    token: Cookies.get('token')
+                }
+        
+                axios
+                    .post('http://localhost:8000/lost-pet', pet)
+                    .then((res) => window.location = res.data.url)
+            } else {
+                console.log('request failed');
+            }
+          })
+          .catch(err => {
+              console.log(err);
+          })
+
+
     }
 
     render() {
