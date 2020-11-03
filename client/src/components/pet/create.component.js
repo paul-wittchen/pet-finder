@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import '../../styles/createPet.scss';
 import ImageUploader from 'react-images-upload';
 
 export default class CreatePet extends Component {
@@ -36,7 +37,7 @@ export default class CreatePet extends Component {
         event.preventDefault();
 
         const data = new FormData();
-        data.append('image', this.state.image, this.state.image.name)
+        data.append('image', this.state.image[0].name)
 
         const pet = {
             petName: this.state.petName,
@@ -56,6 +57,7 @@ export default class CreatePet extends Component {
     }
 
     render() {
+        console.log(this.state.image[0]);
         return(
             <Form onSubmit={this.onSubmit}>
                 <ImageUploader

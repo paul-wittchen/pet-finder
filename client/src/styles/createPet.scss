@@ -1,0 +1,29 @@
+@import './vars';
+
+form {
+    padding: 0px 80px;
+
+    .fileContainer {
+        border: none !important;
+        box-shadow: 0px 0px 0px 0px;
+    }
+    label {
+        font-family: $text-font;
+    }
+    input {
+        font-family: $text-font;
+        border: none !important;
+        background-color: #F3F3F3 !important;
+        &:focus {
+            background-color: #F3F3F3 !important;
+        }
+    }
+    textarea {
+        font-family: $text-font;
+        border: none !important;
+        background-color: #F3F3F3 !important;
+        &:focus {
+            background-color: #F3F3F3 !important;
+        }
+    }
+}

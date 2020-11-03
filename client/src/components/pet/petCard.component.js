@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
 import PhoneModal from './phoneModal.component';
 import MessageModal from './msgModal.component';
+import { Link } from 'react-router-dom';
 
 export default class PetCard extends Component {
     constructor(props) {
@@ -48,7 +49,8 @@ export default class PetCard extends Component {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button className='pet__card__btn'><i className="fas fa-info-circle"></i> Details</Button>
+                        <a href={`/pets-list/${this.props.uuid}`}><i className="fas fa-info-circle"></i> Details</a>
+
                         {this.props.contact.includes('@') ? (
                             <Button className='pet__card__btn' onClick={this.openModalMsg}><i className="far fa-envelope"></i> Message</Button>
                         ) : (

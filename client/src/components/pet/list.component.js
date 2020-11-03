@@ -32,6 +32,7 @@ export default class ListPets extends Component {
                 <Row lg={4} md={2} sm={1} className='justify-content-center'>
                         {this.state.pets.map(pet => 
                             <PetCard
+                                uuid={pet.uuid}
                                 petName={pet.petName}
                                 petKind={pet.petKind}
                                 description={pet.description}
