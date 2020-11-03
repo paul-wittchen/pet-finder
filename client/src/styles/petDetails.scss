@@ -1,0 +1,39 @@
+@import './vars';
+
+.pet__details__row {
+    padding: 0px 80px;
+    text-align: center;
+
+    .pet__details__left {
+        img {
+            object-fit: fill;
+        }
+    }
+
+    .pet__details__right {
+        margin-top: 80px;
+        .pet__details__name {
+            font-family: $header-font;
+            font-size: $header-font-size;
+        }
+        .pet__details__desc {
+            font-family: $text-font;
+            font-size: $subheader-font-size;
+        }
+    }
+}
+
+.pet__details__info__row {
+    background-color: rgb(238, 238, 238);
+    padding: 16px 32px;
+    .pet__details__row__desc {
+        color: rgb(143, 143, 143);
+        font-family: $text-font;
+        font-size: 14px;
+    }
+    .pet__details__infos {
+        font-family: $text-font;
+        font-size: 18px;
+        margin-top: -16px;
+    }
+}
