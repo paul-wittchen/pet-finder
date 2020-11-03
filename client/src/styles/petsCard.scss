@@ -8,7 +8,9 @@
 
     img {
         border-radius: 24px 24px 0px 0px !important;
-        object-fit: fill;
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
     }
     .pet__card__tag {
         background-color: $second-color;

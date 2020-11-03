@@ -6,7 +6,8 @@
 
     .pet__details__left {
         img {
-            object-fit: fill;
+            object-fit: cover;
+            width: 100%;
         }
     }
 
