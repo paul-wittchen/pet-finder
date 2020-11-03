@@ -53,7 +53,6 @@ export default class PetDetails extends Component {
                                 <p className='pet__details__infos'><Moment fromNow>{this.state.petData.createdAt}</Moment></p>
                             </Col>
                         </Row>
-                        
                     </Col>
                 </Row>
             </div>

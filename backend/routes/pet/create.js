@@ -10,6 +10,8 @@ router.post('/', (req, res) => {
             req.body.petName,
             req.body.description,
             req.body.location,
+            req.body.lat,
+            req.body.lon,
             req.body.createdAt,
             req.body.reward,
             req.body.contact
