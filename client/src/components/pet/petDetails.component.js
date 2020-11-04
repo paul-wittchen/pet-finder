@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Moment from 'react-moment';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import '../../styles/petDetails.scss';
 
 export default class PetDetails extends Component {
@@ -20,6 +22,20 @@ export default class PetDetails extends Component {
                 this.setState({ petData: res.data.pet })
             })
     }
+
+    componentDidUpdate() {
+        mapboxgl.accessToken = 'pk.eyJ1IjoicGF1bDA3MTEiLCJhIjoiY2toMmxybmV6MGRwbzJwcGM4am55dDhjNyJ9.RDH0hBD2iTORkidOf0FNFg';
+        const map = new mapboxgl.Map({
+            container: this.mapContainer,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.petData.lon, this.state.petData.lat],
+            zoom: 14
+            });
+        new mapboxgl.Marker()
+            .setLngLat([this.state.petData.lon, this.state.petData.lat])
+            .addTo(map);
+    }
+
     render() {
         console.log(this.state.petData.petName);
         return(
@@ -55,6 +71,7 @@ export default class PetDetails extends Component {
                         </Row>
                     </Col>
                 </Row>
+                <div className='map' ref={el => this.mapContainer = el} />
             </div>
         )
     }

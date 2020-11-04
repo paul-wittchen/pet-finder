@@ -7,7 +7,6 @@ import Login from './components/user/login.component';
 import Profile from './components/user/profile.component';
 import CreatePet from './components/pet/create.component';
 import ListPets from './components/pet/list.component';
-import FoundPet from './components/pet/foundPet.component';
 import PetDetails from './components/pet/petDetails.component';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
       <Route path='/profile' exact component={Profile}/>
       <Route path='/lost-pet' exact component={CreatePet}/>
       <Route path='/pets-list' exact component={ListPets}/>
-      <Route path='/found-pet' exact component={FoundPet}/>
       <Route path='/pets-list/:id' exact component={PetDetails}/>
     </Router>
   );

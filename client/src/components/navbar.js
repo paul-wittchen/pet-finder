@@ -32,7 +32,6 @@ export default class Navigation extends Component {
                     ) : (
                         <Nav.Link href="/signup">Lost-a-pet</Nav.Link>
                     )}
-                    <Nav.Link href="/found-pet">Found-a-pet</Nav.Link>
                     {this.state.loggedIn ? (
                         <Nav.Link href='/profile'>Profile</Nav.Link>
                     ) : (
