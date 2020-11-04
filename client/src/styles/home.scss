@@ -1,0 +1,20 @@
+@import './vars';
+
+.jumbotron {
+    background-image: linear-gradient($primary-color, $second-color) !important;
+    height: 72vh !important;
+}
+
+.home__header {
+    font-family: $header-font;
+    font-size: 64px;
+    text-align: center;
+    color: white;
+}
+
+.home__subheader {
+    font-family: $text-font;
+    font-size: $subheader-font-size;
+    text-align: center;
+    color: white;
+}

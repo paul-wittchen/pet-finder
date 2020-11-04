@@ -14,7 +14,8 @@ router.post('/', (req, res) => {
             req.body.lon,
             req.body.createdAt,
             req.body.reward,
-            req.body.contact
+            req.body.phone,
+            req.body.mail
         )
         .then(() => res.json({ status: true, url: '/pets-list'}))
         .catch((error) => console.log(error))

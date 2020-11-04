@@ -13,13 +13,14 @@ export default class CreatePet extends Component {
         this.state = {
             petName: '',
             image: [],
-            petKind: '',
+            petKind: 'Something else',
             description: '',
             location: '',
             lat: 0.0,
             lon: 0.0,
             reward: '',
-            contact: ''
+            phone: '',
+            mail: ''
         }
     }
 
@@ -45,7 +46,7 @@ export default class CreatePet extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-
+        
         const data = new FormData();
         data.append('image', this.state.image[0], this.state.image[0].name)
         data.append('token', Cookies.get('token'))
@@ -69,7 +70,8 @@ export default class CreatePet extends Component {
                     lon: this.state.lon,
                     date: this.state.date,
                     reward: this.state.reward,
-                    contact: this.state.contact,
+                    phone: this.state.phone,
+                    mail: this.state.mail,
                     token: Cookies.get('token')
                 }
         
@@ -113,16 +115,21 @@ export default class CreatePet extends Component {
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group>
+                        <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>What kind of pet, have you lost? *</Form.Label>
-                            <Form.Control
-                                type='text'
+                            <Form.Control 
+                                as="select"
+                                defaultValue="Choose..."
                                 name='petKind'
                                 value={this.state.petKind}
                                 onChange={this.onChange}
-                                required
-                                placeholder='e.g. Dog'
-                            />
+                                required>
+                                <option value='Something else'>Choose...</option>
+                                <option  value='Dog'>Dog</option>
+                                <option  value='Cat'>Cat</option>
+                                <option  value='Rabbit'>Rabbit</option>
+                                <option  value='Something else'>Something else</option>
+                            </Form.Control>
                         </Form.Group>
                     </Col>
                 </Row>
@@ -150,7 +157,7 @@ export default class CreatePet extends Component {
                     </Col>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Is there a reward for the founder? (optional)</Form.Label>
+                            <Form.Label>Is there a reward for the founder?</Form.Label>
                             <Form.Control
                                 type='text'
                                 name='reward'
@@ -161,18 +168,39 @@ export default class CreatePet extends Component {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Form.Group>
-                    <Form.Label>How should people contact you?</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='contact'
-                        value={this.state.contact}
-                        onChange={this.onChange}
-                        placeholder='Tel / Email'
-                        required
-                    />
-                </Form.Group>
-                <Button variant="primary" type="submit">
+                <Row>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>Please enter your phone number!</Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='phone'
+                                value={this.state.phone}
+                                onChange={this.onChange}
+                                placeholder='012 3456789'
+                            />
+                            <Form.Text className="text-muted create__pet__contact__warning">
+                                !! Without providing your contact details, nobody can inform you, if your pet is found !!
+                            </Form.Text>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group>
+                            <Form.Label>Please enter your mail address!</Form.Label>
+                            <Form.Control
+                                type='email'
+                                name='mail'
+                                value={this.state.mail}
+                                onChange={this.onChange}
+                                placeholder='example@mail.com'
+                            />
+                            <Form.Text className="text-muted create__pet__contact__warning">
+                                !! Without providing your contact details, nobody can inform you, if your pet is found !!
+                            </Form.Text>
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Button className='create__pet__submit' variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

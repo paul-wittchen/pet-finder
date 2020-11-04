@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Spinner } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import Moment from 'react-moment';
 import '../../styles/petsCard.scss';
 import PhoneModal from './phoneModal.component';
@@ -48,24 +48,34 @@ export default class PetCard extends Component {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <a href={`/pets-list/${this.props.uuid}`}><i className="fas fa-info-circle"></i> Details</a>
-
-                        {this.props.contact.includes('@') ? (
-                            <Button className='pet__card__btn' onClick={this.openModalMsg}><i className="far fa-envelope"></i> Message</Button>
+                        <a className='pet__card__btn' href={`/pets-list/${this.props.uuid}`}>
+                            <i className="fas fa-info-circle"></i> Details
+                        </a>
+                        {this.props.phone !== '' ? (
+                            <a className='pet__card__btn' onClick={this.openModalPhone} href='#'>
+                                <i className="fas fa-phone-alt"></i> Phone
+                            </a>
                         ) : (
-                            <Button className='pet__card__btn' onClick={this.openModalPhone}><i className="fas fa-phone-alt"></i> Call</Button>
+                            <> </>
+                        )}
+                        {this.props.mail !== '' ? (
+                            <a className='pet__card__btn' onClick={this.openModalMsg} href='#'>
+                                <i className="far fa-envelope"></i> Message
+                            </a>
+                        ) : (
+                            <> </>
                         )}
                     </Card.Footer>
                 </Card>
                 <PhoneModal
                     petName={this.props.petName}
-                    phone={this.props.contact}
+                    phone={this.props.phone}
                     closeModalPhone={this.closeModalPhone}
                     open={this.state.isOpenPhone}
                 />
                 <MessageModal
                     petName={this.props.petName}
-                    mail={this.props.contact}
+                    mail={this.props.mail}
                     closeModalMsg={this.closeModalMsg}
                     open={this.state.isOpenMsg}
                 />

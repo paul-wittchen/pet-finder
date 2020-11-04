@@ -14,6 +14,18 @@ form {
         font-family: $text-font;
         border: none !important;
         background-color: #F3F3F3 !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
+        &:focus {
+            background-color: #F3F3F3 !important;
+        }
+    }
+    select {
+        font-family: $text-font;
+        border: none !important;
+        background-color: #F3F3F3 !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
         &:focus {
             background-color: #F3F3F3 !important;
         }
@@ -22,8 +34,23 @@ form {
         font-family: $text-font;
         border: none !important;
         background-color: #F3F3F3 !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
         &:focus {
             background-color: #F3F3F3 !important;
+        }
+    }
+    .create__pet__contact__warning {
+        font-family: $text-font;
+        color: rgb(255, 89, 89) !important;
+    }
+    .create__pet__submit {
+        width: 100%;
+        background-color: $primary-color;
+        border: none;
+        transition: .5s;
+        &:hover {
+            background-color: $second-color !important;
         }
     }
 }

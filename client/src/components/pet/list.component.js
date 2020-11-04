@@ -40,7 +40,8 @@ export default class ListPets extends Component {
                                 location={pet.location}
                                 reward={pet.reward}
                                 createdAt={pet.createdAt}
-                                contact={pet.contact}
+                                phone={pet.phone}
+                                mail={pet.mail}
                                 key={pet.createdAt}
                             />
                         )}

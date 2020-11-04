@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('mongoose-type-email');
 
 const Schema = mongoose.Schema;
 
@@ -13,7 +14,8 @@ const petSchema = new Schema(
             required: true
         },
         image: {
-            type: Array
+            type: Array,
+            required: true
         },
         petKind: {
             type: String,
@@ -31,7 +33,8 @@ const petSchema = new Schema(
             required: true
         },
         location: {
-            type: String
+            type: String,
+            required: true
         },
         lat: {
             type: Number
@@ -47,10 +50,13 @@ const petSchema = new Schema(
             type: String,
             trim: true
         },
-        contact: {
+        phone: {
             type: String,
-            trim: true,
-            required: true
+            trim: true
+        },
+        mail: {
+            type: String,
+            trim: true
         }
     },
     {

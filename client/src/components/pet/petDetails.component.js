@@ -34,6 +34,15 @@ export default class PetDetails extends Component {
         new mapboxgl.Marker()
             .setLngLat([this.state.petData.lon, this.state.petData.lat])
             .addTo(map);
+        const nav = new mapboxgl.NavigationControl();
+            map.addControl(nav);
+            map.addControl(new mapboxgl.GeolocateControl({
+                positionOptions: {
+                enableHighAccuracy: true
+                },
+                trackUserLocation: true
+                }));
+
     }
 
     render() {
@@ -61,7 +70,7 @@ export default class PetDetails extends Component {
                                 )}
                             </Col>
                             <Col>
-                                <p className='pet__details__row__desc'>Where:</p>
+                                <p className='pet__details__row__desc'>Last seen:</p>
                                 <p className='pet__details__infos'>{this.state.petData.location}</p>
                             </Col>
                             <Col>
