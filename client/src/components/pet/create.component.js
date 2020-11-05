@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import '../../styles/createPet.scss';
-import ImageUploader from 'react-images-upload';
-import AlgoliaPlaces from 'algolia-places-react';
 import BounceLoader from "react-spinners/BounceLoader";
+import CreateForm from './createForm.component';
 
 export default class CreatePet extends Component {
     constructor() {
@@ -13,7 +11,7 @@ export default class CreatePet extends Component {
 
         this.state = {
             petName: '',
-            image: [],
+            image: null,
             petKind: 'Something else',
             description: '',
             location: '',
@@ -40,10 +38,16 @@ export default class CreatePet extends Component {
         })
     }
 
-    onDrop = (picture) => {
+    onDrop = (event) => {
         this.setState({
-            image: this.state.image.concat(picture),
+            image: event.target.files[0]
         });
+    }
+
+    removeImage = () => {
+        this.setState({
+            image: null
+        })
     }
 
     onSubmit = (event) => {
@@ -53,7 +57,7 @@ export default class CreatePet extends Component {
         })
 
         const data = new FormData();
-        data.append('image', this.state.image[0], this.state.image[0].name)
+        data.append('image', this.state.image, this.state.image.name)
         data.append('token', Cookies.get('token'))
 
         axios.post('http://localhost:8000/upload-pet-image', data, {
@@ -99,119 +103,21 @@ export default class CreatePet extends Component {
                     <svg className='svg__left' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <path fill="#E76F51" d="M46,-24C56,-9.2,58,12.7,49,20.4C40,28,20,21.4,5.8,18.1C-8.4,14.7,-16.8,14.6,-26.1,6.8C-35.4,-1.1,-45.7,-16.7,-41.5,-28.1C-37.3,-39.5,-18.6,-46.6,-0.3,-46.5C18,-46.3,36,-38.7,46,-24Z" transform="translate(100 100)" />
                     </svg>
-                    <Form onSubmit={this.onSubmit}>
-                        <ImageUploader
-                            withIcon={true}
-                            buttonText='Select image'
-                            onChange={this.onDrop}
-                            imgExtension={['.jpg', '.png', '.gif']}
-                            maxFileSize={5242880}
-                            singleImage={true}
-                        />
-                        <Row>
-                            <Col>
-                                <Form.Group controlId="exampleForm.ControlInput1">
-                                    <Form.Label>Whats the name of your pet? *</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
-                                        name='petName'
-                                        value={this.state.petName}
-                                        onChange={this.onChange}
-                                        required
-                                        placeholder='e.g. Fluffy'
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>What kind of pet, are you missing? *</Form.Label>
-                                    <Form.Control 
-                                        as="select"
-                                        defaultValue="Choose..."
-                                        name='petKind'
-                                        value={this.state.petKind}
-                                        onChange={this.onChange}
-                                        required>
-                                        <option value='Something else'>Choose...</option>
-                                        <option  value='Dog'>Dog</option>
-                                        <option  value='Cat'>Cat</option>
-                                        <option  value='Rabbit'>Rabbit</option>
-                                        <option  value='Something else'>Something else</option>
-                                    </Form.Control>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Describe your pet! *</Form.Label>
-                            <Form.Control 
-                                as="textarea" 
-                                name='description'
-                                rows={4} 
-                                placeholder='How does your pet look like? Is it shy? Is it aggressive? etc.'
-                                value={this.state.description}
-                                onChange={this.onChange}
-                                required
-                            />
-                        </Form.Group>
-                        <Row>
-                            <Col>
-                                <Form.Group>
-                                    <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                                    <AlgoliaPlaces
-                                        placeholder='location'
-                                        onChange={this.handleAlgoliaChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group>
-                                    <Form.Label>Is there a reward for the founder?</Form.Label>
-                                    <Form.Control
-                                        type='text'
-                                        name='reward'
-                                        value={this.state.reward}
-                                        onChange={this.onChange}
-                                        placeholder='e.g. 100$'
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Group>
-                                    <Form.Label>Please enter your phone number!</Form.Label>
-                                    <Form.Control
-                                        type='text'
-                                        name='phone'
-                                        value={this.state.phone}
-                                        onChange={this.onChange}
-                                        placeholder='012 3456789'
-                                    />
-                                    <Form.Text className="text-muted create__pet__contact__warning">
-                                        !! Without providing your contact details, nobody can inform you, if your pet is found !!
-                                    </Form.Text>
-                                </Form.Group>
-                            </Col>
-                            <Col>
-                                <Form.Group>
-                                    <Form.Label>Please enter your mail address!</Form.Label>
-                                    <Form.Control
-                                        type='email'
-                                        name='mail'
-                                        value={this.state.mail}
-                                        onChange={this.onChange}
-                                        placeholder='example@mail.com'
-                                    />
-                                    <Form.Text className="text-muted create__pet__contact__warning">
-                                        !! Without providing your contact details, nobody can inform you, if your pet is found !!
-                                    </Form.Text>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Button onClick={this.creatingCard} className='create__pet__submit' type="submit">
-                            Submit
-                        </Button>
-                    </Form>
+                    <CreateForm
+                        onSubmit={this.onSubmit}
+                        onDrop={this.onDrop}
+                        onChange={this.onChange}
+                        removeImage={this.removeImage}
+                        onImageSelect={this.onImageSelect}
+                        image={this.state.image}
+                        petName={this.state.petName}
+                        petKind={this.state.petKind}
+                        description={this.state.description}
+                        handleAlgoliaChange={this.handleAlgoliaChange}
+                        reward={this.state.reward}
+                        phone={this.state.phone}
+                        mail={this.state.mail}
+                    />
                     <svg className='svg__right' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <path fill="#E76F51" d="M46,-24C56,-9.2,58,12.7,49,20.4C40,28,20,21.4,5.8,18.1C-8.4,14.7,-16.8,14.6,-26.1,6.8C-35.4,-1.1,-45.7,-16.7,-41.5,-28.1C-37.3,-39.5,-18.6,-46.6,-0.3,-46.5C18,-46.3,36,-38.7,46,-24Z" transform="translate(100 100)" />
                     </svg>

@@ -6,6 +6,7 @@
     width: 3200px;
     margin-top: -1200px;
     margin-bottom: -1600px;
+    margin-left: 400px;
     z-index: -1;
 }
 
@@ -14,18 +15,65 @@
     height: 3200px;
     width: 3200px;
     margin-top: -1200px;
-    margin-left: -2000px;
+    margin-left: -2100px;
     margin-bottom: -3200px;
     z-index: -1;
 }
 
 form {
     padding: 0px 80px;
-
-    .fileContainer {
-        border: none !important;
-        box-shadow: 0px 0px 0px 0px;
-        background-color: transparent;
+    margin: 0 auto;
+    width: 72vw;
+    .pet__create__image__wrapper {
+        text-align: center;
+        margin-bottom: 48px;
+        p {
+            margin-top: 8px;
+            font-family: $text-font;
+        }
+    }
+    .pet__create__image__upload__wrapper{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        .pet__create__image__upload {
+            height:120px;
+            width:120px;
+            border-radius: 50%;
+            position:relative;
+            display:flex;
+            justify-content:center;
+            align-items: center;  
+            background-image: linear-gradient(to bottom, $third-color 50%, $primary-color 50%);
+            background-size: 100% 200%;
+            transition: all 1s;
+            color: #FFFFFF;
+            font-size:64px;
+            input[type='file'] {
+                height:120px;
+                width:10px;
+                position:absolute;
+                top:0;
+                left:0;
+                opacity:0;
+            }
+            &:hover{
+                background-position: 0 -100%;
+                color:white;
+            }
+        }
+    }
+    .pet__create__image__chosen {
+        height: 200px;
+        .pet__create__image__name {
+            font-family: $text-font;
+            text-align: center;
+        }
+        .pet__create__image__remove {
+            font-family: $text-font;
+            text-align: center;
+            cursor: pointer;
+        }
     }
     label {
         font-family: $text-font;
@@ -74,6 +122,7 @@ form {
         border: none;
         transition: .5s;
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
+        padding: 8px;
         &:hover {
             background-color: $primary-color !important;
         }
