@@ -64,16 +64,12 @@
             margin: 8px 4px;
             font-family: $text-font;
             transition: .5s;
+            color: white;
+            font-size: 14px;
+            font-family: $text-font;
             &:hover {
                 background-color: $primary-color;
             }
-        }
-        a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: $text-font;
-            cursor: pointer;
         }
     }
 }

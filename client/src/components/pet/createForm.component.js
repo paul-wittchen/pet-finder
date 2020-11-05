@@ -6,7 +6,7 @@ export default class FormCreate extends Component {
 
     render() {
         return(
-            <Form onSubmit={this.props.onSubmit}>
+            <Form className='create__pet__form' onSubmit={this.props.onSubmit}>
                 { this.props.image === null ? (
                     <div className='pet__create__image__wrapper'>
                         <div className="pet__create__image__upload__wrapper">

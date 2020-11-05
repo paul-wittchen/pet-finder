@@ -16,10 +16,24 @@
         font-family: $text-font;
         font-size: 20px;
         button {
-            margin-top: 40px;
+            background-color: $third-color;
+            border: none;
+            border-radius: 16px;
+            padding: 8px 16px;
+            margin: 8px 4px;
+            font-family: $text-font;
+            transition: .5s;
+            color: white;
+            font-size: 14px;
+            font-family: $text-font;
+            &:hover {
+                background-color: $primary-color;
+            }
         }
     }
     .modal__msg__form {
+        width: 100%;
+        text-align: center;
         label {
             font-family: $text-font;
             font-size: 16px;

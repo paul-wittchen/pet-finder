@@ -41,7 +41,7 @@ export default class MessageModal extends Component {
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Submit
+                            Send
                         </Button>
                         <Button variant="primary" onClick={this.props.closeModalMsg}>
                             Close
@@ -52,4 +52,3 @@ export default class MessageModal extends Component {
         )
     }
 }
-

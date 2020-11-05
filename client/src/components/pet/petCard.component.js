@@ -41,10 +41,18 @@ export default class PetCard extends Component {
                             <Moment fromNow>{this.props.createdAt}</Moment>
                         </div>
                         <Card.Text className='pet__card__desc'>
-                            {this.props.description.substring(0, 140)} ... <br/>
-                            <a className='pet__card__readmore' href={`/pets-list/${this.props.uuid}`}>
-                                Read more
-                            </a>
+                            {this.props.description.length >= 140 ? (
+                                <span>
+                                    {this.props.description.substring(0, 140)} ... <br/>
+                                    <a className='pet__card__readmore' href={`/pets-list/${this.props.uuid}`}>
+                                        Read more
+                                    </a>
+                                </span>
+                            ) : (
+                                <span>
+                                    {this.props.description}
+                                </span>
+                            )}
                         </Card.Text>
                         <Card.Text className='pet__card__location text-center'>
                             <i className="fas fa-map-marker-alt"></i> {this.props.location}
@@ -55,16 +63,16 @@ export default class PetCard extends Component {
                             <i className="fas fa-info-circle"></i> Details
                         </a>
                         {this.props.phone !== '' ? (
-                            <a className='pet__card__btn' onClick={this.openModalPhone} href>
+                            <button className='pet__card__btn' onClick={this.openModalPhone}>
                                 <i className="fas fa-phone-alt"></i> Phone
-                            </a>
+                            </button>
                         ) : (
                             <> </>
                         )}
                         {this.props.mail !== '' ? (
-                            <a className='pet__card__btn' onClick={this.openModalMsg} href>
+                            <button className='pet__card__btn' onClick={this.openModalMsg}>
                                 <i className="far fa-envelope"></i> Message
-                            </a>
+                            </button>
                         ) : (
                             <> </>
                         )}
@@ -89,6 +97,5 @@ export default class PetCard extends Component {
                 <Spinner animation="border" />
             ) 
         }
-        
     }
 }
