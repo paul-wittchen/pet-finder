@@ -13,7 +13,8 @@ export default class FormCreate extends Component {
                             <div className="pet__create__image__upload">
                                 <input
                                     type="file" 
-                                    onChange={this.props.onDrop}>  
+                                    onChange={this.props.onDrop}
+                                    required>  
                                 </input>
                                 <i className="fas fa-file-upload"></i>
                             </div>
@@ -22,7 +23,9 @@ export default class FormCreate extends Component {
                     </div>
                 ) : (
                     <div className='pet__create__image__chosen'>
-                        <p className='pet__create__image__name'>{this.props.image.name}</p>
+                        <p className='pet__create__image__name'>
+                            <i className="far fa-image fa-lg"></i> {this.props.image.name}
+                        </p>
                         <p className='pet__create__image__remove' onClick={this.props.removeImage}>
                             Remove picture
                         </p>
@@ -79,6 +82,7 @@ export default class FormCreate extends Component {
                             <AlgoliaPlaces
                                 placeholder='location'
                                 onChange={this.props.handleAlgoliaChange}
+                                required
                             />
                         </Form.Group>
                     </Col>
