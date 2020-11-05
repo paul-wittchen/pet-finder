@@ -41,7 +41,10 @@ export default class PetCard extends Component {
                             <Moment fromNow>{this.props.createdAt}</Moment>
                         </div>
                         <Card.Text className='pet__card__desc'>
-                            {this.props.description}
+                            {this.props.description.substring(0, 140)} ... <br/>
+                            <a className='pet__card__readmore' href={`/pets-list/${this.props.uuid}`}>
+                                Read more
+                            </a>
                         </Card.Text>
                         <Card.Text className='pet__card__location text-center'>
                             <i className="fas fa-map-marker-alt"></i> {this.props.location}

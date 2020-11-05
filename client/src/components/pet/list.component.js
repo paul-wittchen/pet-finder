@@ -26,6 +26,7 @@ export default class ListPets extends Component {
     }
 
     render() {
+        console.log(this.state.pets);
         return(
             <div className='pets__list__container'>
                 <svg className='svg__top' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
