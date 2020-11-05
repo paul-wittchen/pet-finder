@@ -103,6 +103,7 @@ export default class CreatePet extends Component {
                     <svg className='svg__left' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <path fill="#E76F51" d="M46,-24C56,-9.2,58,12.7,49,20.4C40,28,20,21.4,5.8,18.1C-8.4,14.7,-16.8,14.6,-26.1,6.8C-35.4,-1.1,-45.7,-16.7,-41.5,-28.1C-37.3,-39.5,-18.6,-46.6,-0.3,-46.5C18,-46.3,36,-38.7,46,-24Z" transform="translate(100 100)" />
                     </svg>
+                    <p className='pet__create__header'>Create your search call</p>
                     <CreateForm
                         onSubmit={this.onSubmit}
                         onDrop={this.onDrop}
