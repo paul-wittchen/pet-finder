@@ -52,14 +52,14 @@ export default class PetCard extends Component {
                             <i className="fas fa-info-circle"></i> Details
                         </a>
                         {this.props.phone !== '' ? (
-                            <a className='pet__card__btn' onClick={this.openModalPhone} href='#'>
+                            <a className='pet__card__btn' onClick={this.openModalPhone} href>
                                 <i className="fas fa-phone-alt"></i> Phone
                             </a>
                         ) : (
                             <> </>
                         )}
                         {this.props.mail !== '' ? (
-                            <a className='pet__card__btn' onClick={this.openModalMsg} href='#'>
+                            <a className='pet__card__btn' onClick={this.openModalMsg} href>
                                 <i className="far fa-envelope"></i> Message
                             </a>
                         ) : (

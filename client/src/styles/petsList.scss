@@ -9,3 +9,22 @@
     font-family: $header-font;
     font-size: $header-font-size;
 }
+
+.svg__top {
+    position: absolute;
+    height: 3200px;
+    width: 3200px;
+    margin-top: -1700px;
+    margin-left: -1500px;
+    z-index: -1;
+}
+
+.svg__bottom {
+    position: absolute;
+    height: 2400px;
+    width: 2400px;
+    margin-top: -400px;
+    margin-bottom: -1800px;
+    margin-left: 400px;
+    z-index: -1;
+}

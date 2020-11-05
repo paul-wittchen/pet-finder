@@ -1,11 +1,31 @@
 @import './vars';
 
+.svg__left {
+    position: absolute;
+    height: 3200px;
+    width: 3200px;
+    margin-top: -1200px;
+    margin-bottom: -1600px;
+    z-index: -1;
+}
+
+.svg__right {
+    position: absolute;
+    height: 3200px;
+    width: 3200px;
+    margin-top: -1200px;
+    margin-left: -2000px;
+    margin-bottom: -3200px;
+    z-index: -1;
+}
+
 form {
     padding: 0px 80px;
 
     .fileContainer {
         border: none !important;
         box-shadow: 0px 0px 0px 0px;
+        background-color: transparent;
     }
     label {
         font-family: $text-font;
@@ -16,6 +36,7 @@ form {
         background-color: #F3F3F3 !important;
         border-radius: 8px !important;
         padding: 8px 16px !important;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
         &:focus {
             background-color: #F3F3F3 !important;
         }
@@ -26,6 +47,7 @@ form {
         background-color: #F3F3F3 !important;
         border-radius: 8px !important;
         padding: 8px 16px !important;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
         &:focus {
             background-color: #F3F3F3 !important;
         }
@@ -36,6 +58,7 @@ form {
         background-color: #F3F3F3 !important;
         border-radius: 8px !important;
         padding: 8px 16px !important;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
         &:focus {
             background-color: #F3F3F3 !important;
         }
@@ -46,11 +69,26 @@ form {
     }
     .create__pet__submit {
         width: 100%;
-        background-color: $primary-color;
+        background-color: $third-color;
+        border-radius: 16px;
         border: none;
         transition: .5s;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
         &:hover {
-            background-color: $second-color !important;
+            background-color: $primary-color !important;
         }
+    }
+}
+
+.pet__create__loader__container {
+    text-align: center;
+    margin-top: $big-spacing;
+    .pet__create__loader__header {
+        font-weight: $header-font;
+        font-size: $header-font-size;
+        color: $primary-color;
+    }
+    .css-1fu4ans {
+        margin: 40px auto;
     }
 }

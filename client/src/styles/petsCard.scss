@@ -2,7 +2,7 @@
 
 .pet__card {
     border: none !important;
-    box-shadow: 0px 0px 10px 5px rgb(241, 241, 241);
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
     margin: 16px 16px;
     border-radius: 24px !important;
 
@@ -54,7 +54,7 @@
         text-align: center;
         padding: 24px 0px;
         .pet__card__btn {
-            background-color: $primary-color;
+            background-color: $third-color;
             border: none;
             border-radius: 16px;
             padding: 8px 16px;
@@ -66,6 +66,7 @@
             text-decoration: none;
             font-size: 14px;
             font-family: $text-font;
+            cursor: pointer;
         }
     }
 }

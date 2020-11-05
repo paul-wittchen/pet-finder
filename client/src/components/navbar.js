@@ -22,7 +22,7 @@ export default class Navigation extends Component {
     render() {
         if (!this.state.loading) {
             return(
-                <Navbar className='navbar__main' bg="light" variant="light">
+                <Navbar className='navbar__main' variant="light">
                     <Navbar.Brand href="/">PetFinder</Navbar.Brand>
                     <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>

@@ -2,19 +2,74 @@
 
 .jumbotron {
     background-image: linear-gradient($primary-color, $second-color) !important;
-    height: 72vh !important;
+    height: 80vh !important;
+    margin-top: -80px;
+    .home__header {
+        font-family: $header-font;
+        font-size: 64px;
+        text-align: center;
+        color: white;
+    }
+    
+    .home__subheader {
+        font-family: $text-font;
+        font-size: $subheader-font-size;
+        text-align: center;
+        color: white;
+    }
 }
 
-.home__header {
-    font-family: $header-font;
-    font-size: 64px;
+.home__cta__container {
     text-align: center;
-    color: white;
+    margin: $big-spacing 0px;
+    .home__cta__btn {
+        margin: 0px 64px;
+        background-color: $third-color;
+        border: none;
+        border-radius: 32px;
+        padding: 16px 32px;
+        font-family: $text-font;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+            text-decoration: none;
+            color: white;
+        }
+    }
 }
 
-.home__subheader {
-    font-family: $text-font;
-    font-size: $subheader-font-size;
+.home__row__img {
     text-align: center;
-    color: white;
+    img {
+        width: 8vw;
+    }
+}
+
+.home__stories__row {
+    margin-top: -120px;
+    margin-bottom: $big-spacing;
+    .card {
+        border-radius: 24px;
+        border: none !important;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
+        height: 440px;
+        img {
+            border-radius: 24px 24px 0px 0px !important;
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .card-title {
+            font-family: $header-font;
+            text-align: center;
+            i {
+                color: $primary-color;
+            }
+        }
+        .card-text {
+            font-family: $text-font;
+        }
+    }
 }

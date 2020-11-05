@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import '../../styles/createPet.scss';
 import ImageUploader from 'react-images-upload';
 import AlgoliaPlaces from 'algolia-places-react';
+import BounceLoader from "react-spinners/BounceLoader";
 
 export default class CreatePet extends Component {
     constructor() {
@@ -20,7 +21,8 @@ export default class CreatePet extends Component {
             lon: 0.0,
             reward: '',
             phone: '',
-            mail: ''
+            mail: '',
+            uploading: false
         }
     }
 
@@ -46,7 +48,10 @@ export default class CreatePet extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        
+        this.setState({
+            uploading: true
+        })
+
         const data = new FormData();
         data.append('image', this.state.image[0], this.state.image[0].name)
         data.append('token', Cookies.get('token'))
@@ -88,122 +93,141 @@ export default class CreatePet extends Component {
     }
 
     render() {
-        console.log(this.state.location);
-        return(
-            <Form onSubmit={this.onSubmit}>
-                <ImageUploader
-                    withIcon={true}
-                    buttonText='Select image'
-                    onChange={this.onDrop}
-                    imgExtension={['.jpg', '.png', '.gif']}
-                    maxFileSize={5242880}
-                    withPreview={true}
-                    singleImage={true}
-                />
-                <Row>
-                    <Col>
-                        <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Whats the name of your pet? *</Form.Label>
+        if (!this.state.uploading) {
+            return(
+                <div>
+                    <svg className='svg__left' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#E76F51" d="M46,-24C56,-9.2,58,12.7,49,20.4C40,28,20,21.4,5.8,18.1C-8.4,14.7,-16.8,14.6,-26.1,6.8C-35.4,-1.1,-45.7,-16.7,-41.5,-28.1C-37.3,-39.5,-18.6,-46.6,-0.3,-46.5C18,-46.3,36,-38.7,46,-24Z" transform="translate(100 100)" />
+                    </svg>
+                    <Form onSubmit={this.onSubmit}>
+                        <ImageUploader
+                            withIcon={true}
+                            buttonText='Select image'
+                            onChange={this.onDrop}
+                            imgExtension={['.jpg', '.png', '.gif']}
+                            maxFileSize={5242880}
+                            singleImage={true}
+                        />
+                        <Row>
+                            <Col>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Whats the name of your pet? *</Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        name='petName'
+                                        value={this.state.petName}
+                                        onChange={this.onChange}
+                                        required
+                                        placeholder='e.g. Fluffy'
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group as={Col} controlId="formGridState">
+                                    <Form.Label>What kind of pet, are you missing? *</Form.Label>
+                                    <Form.Control 
+                                        as="select"
+                                        defaultValue="Choose..."
+                                        name='petKind'
+                                        value={this.state.petKind}
+                                        onChange={this.onChange}
+                                        required>
+                                        <option value='Something else'>Choose...</option>
+                                        <option  value='Dog'>Dog</option>
+                                        <option  value='Cat'>Cat</option>
+                                        <option  value='Rabbit'>Rabbit</option>
+                                        <option  value='Something else'>Something else</option>
+                                    </Form.Control>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Describe your pet! *</Form.Label>
                             <Form.Control 
-                                type="text" 
-                                name='petName'
-                                value={this.state.petName}
+                                as="textarea" 
+                                name='description'
+                                rows={4} 
+                                placeholder='How does your pet look like? Is it shy? Is it aggressive? etc.'
+                                value={this.state.description}
                                 onChange={this.onChange}
                                 required
-                                placeholder='e.g. Fluffy'
                             />
                         </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>What kind of pet, have you lost? *</Form.Label>
-                            <Form.Control 
-                                as="select"
-                                defaultValue="Choose..."
-                                name='petKind'
-                                value={this.state.petKind}
-                                onChange={this.onChange}
-                                required>
-                                <option value='Something else'>Choose...</option>
-                                <option  value='Dog'>Dog</option>
-                                <option  value='Cat'>Cat</option>
-                                <option  value='Rabbit'>Rabbit</option>
-                                <option  value='Something else'>Something else</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Describe your pet! *</Form.Label>
-                    <Form.Control 
-                        as="textarea" 
-                        name='description'
-                        rows={4} 
-                        placeholder='How does your pet look like? Is it shy? Is it aggressive? etc.'
-                        value={this.state.description}
-                        onChange={this.onChange}
-                        required
+                        <Row>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Where have you seen your pet the last time? *</Form.Label>
+                                    <AlgoliaPlaces
+                                        placeholder='location'
+                                        onChange={this.handleAlgoliaChange}
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Is there a reward for the founder?</Form.Label>
+                                    <Form.Control
+                                        type='text'
+                                        name='reward'
+                                        value={this.state.reward}
+                                        onChange={this.onChange}
+                                        placeholder='e.g. 100$'
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Please enter your phone number!</Form.Label>
+                                    <Form.Control
+                                        type='text'
+                                        name='phone'
+                                        value={this.state.phone}
+                                        onChange={this.onChange}
+                                        placeholder='012 3456789'
+                                    />
+                                    <Form.Text className="text-muted create__pet__contact__warning">
+                                        !! Without providing your contact details, nobody can inform you, if your pet is found !!
+                                    </Form.Text>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Please enter your mail address!</Form.Label>
+                                    <Form.Control
+                                        type='email'
+                                        name='mail'
+                                        value={this.state.mail}
+                                        onChange={this.onChange}
+                                        placeholder='example@mail.com'
+                                    />
+                                    <Form.Text className="text-muted create__pet__contact__warning">
+                                        !! Without providing your contact details, nobody can inform you, if your pet is found !!
+                                    </Form.Text>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Button onClick={this.creatingCard} className='create__pet__submit' type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                    <svg className='svg__right' viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#E76F51" d="M46,-24C56,-9.2,58,12.7,49,20.4C40,28,20,21.4,5.8,18.1C-8.4,14.7,-16.8,14.6,-26.1,6.8C-35.4,-1.1,-45.7,-16.7,-41.5,-28.1C-37.3,-39.5,-18.6,-46.6,-0.3,-46.5C18,-46.3,36,-38.7,46,-24Z" transform="translate(100 100)" />
+                    </svg>
+                </div>
+            )
+        } else {
+            return(
+                <div className='pet__create__loader__container'>
+                    <p className='pet__create__loader__header'>Uploading . . .</p>
+                    <BounceLoader
+                        size={240}
+                        color={"#E76F51"}
+                        loading={this.state.uploading}
                     />
-                </Form.Group>
-                <Row>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>Where have you seen your pet the last time? *</Form.Label>
-                            <AlgoliaPlaces
-                                placeholder='location'
-                                onChange={this.handleAlgoliaChange}
-                            />
-                        </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>Is there a reward for the founder?</Form.Label>
-                            <Form.Control
-                                type='text'
-                                name='reward'
-                                value={this.state.reward}
-                                onChange={this.onChange}
-                                placeholder='e.g. 100$'
-                            />
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>Please enter your phone number!</Form.Label>
-                            <Form.Control
-                                type='text'
-                                name='phone'
-                                value={this.state.phone}
-                                onChange={this.onChange}
-                                placeholder='012 3456789'
-                            />
-                            <Form.Text className="text-muted create__pet__contact__warning">
-                                !! Without providing your contact details, nobody can inform you, if your pet is found !!
-                            </Form.Text>
-                        </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group>
-                            <Form.Label>Please enter your mail address!</Form.Label>
-                            <Form.Control
-                                type='email'
-                                name='mail'
-                                value={this.state.mail}
-                                onChange={this.onChange}
-                                placeholder='example@mail.com'
-                            />
-                            <Form.Text className="text-muted create__pet__contact__warning">
-                                !! Without providing your contact details, nobody can inform you, if your pet is found !!
-                            </Form.Text>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Button className='create__pet__submit' variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        )
+                </div>
+            )
+        }
     }
 }
