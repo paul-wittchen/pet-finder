@@ -8,7 +8,7 @@
 }
 
 .container__left {
-    margin: 0px auto;
+    margin-top: 16px;
 
     .profile__firstname {
         font-size: $header-font-size;
@@ -25,5 +25,6 @@
         width: 240px;
         height: 320px;
         object-fit: cover;
+        border-radius: 50%;
     }
 }

@@ -4,7 +4,7 @@ const petHelper = require('../../helper/pet.helper');
 router.get('/', (req, res) => {
     petHelper
         .read()
-        .then((pets) => res.json({pets}))
+        .then((pets) => res.json({ pets }))
         .catch(error => res.status(400).json('Error: ' + error));
 });
 

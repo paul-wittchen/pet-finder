@@ -8,4 +8,11 @@ router.post('/', (req, res) => {
         .catch((error) => console.log(error))
 });
 
+router.delete('/:uuid', (req, res) => {
+    userHelper
+        .deletePet(req.params.uuid)
+        .then(() => res.json('Pet deleted'))
+        .catch((error) => console.log(error))
+})
+
 module.exports = router;
