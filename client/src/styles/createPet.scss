@@ -1,22 +1,13 @@
 @import './vars';
 
-.svg__left {
-    position: absolute;
-    height: 3200px;
-    width: 3200px;
-    margin-top: -1200px;
-    margin-bottom: -1600px;
-    margin-left: 400px;
-    z-index: -1;
-}
-
 .svg__right {
     position: absolute;
     height: 3200px;
     width: 3200px;
     margin-top: -1200px;
-    margin-left: -2100px;
+    margin-left: -1900px;
     margin-bottom: -3200px;
+    margin-right: -2000px;
     z-index: -1;
 }
 
