@@ -11,7 +11,6 @@ export default class ListPets extends Component {
         this.state = {
             pets: []
         }
-
     }
 
     componentDidMount() {

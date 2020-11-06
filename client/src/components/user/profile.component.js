@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import '../../styles/profile.scss';
 import { Row, Col } from 'react-bootstrap';
+import PetList from './petList/petList'
 
 export default class Profile extends Component {
     constructor() {
@@ -10,7 +11,7 @@ export default class Profile extends Component {
         const token = Cookies.get('token');
 
         this.state = {
-            user: {},
+            user: null,
             token
         }
     }
@@ -19,7 +20,8 @@ export default class Profile extends Component {
         axios
             .post('http://localhost:8000/profile', { token: this.state.token })
             .then((res) => {
-                this.setState({ user: res.data.profile })
+                console.log(res.data.data);
+                this.setState({ user: res.data.data })
             })
             .catch((error) => console.log(error))
     }
@@ -30,6 +32,9 @@ export default class Profile extends Component {
     }
 
     render() {
+       if(this.state.user === null) {
+        return <div>Loading...</div>
+       } else {
         return(
             <div className='profile__container'>
                 <Row className='profile__basic__row'>
@@ -40,11 +45,11 @@ export default class Profile extends Component {
                         <a href="/" onClick={this.logout}>Logout</a>
                     </Col>
                     <Col className='container__right'>
-                    
+                        <PetList pets={this.state.user.pet}/>
                     </Col>
                 </Row>
             </div>
-            
         )
+       }
     }
 }

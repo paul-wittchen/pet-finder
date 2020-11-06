@@ -38,7 +38,7 @@ export default class Home extends Component {
                             <Card.Img variant="top" src={story1} />
                             <Card.Body>
                                 <Card.Title>
-                                    Petra &amp; Luca <i class="fas fa-dog"></i>
+                                    Petra &amp; Luca <i className="fas fa-dog"></i>
                                 </Card.Title>
                                 <Card.Text>
                                     " Thanks to <b>PetFinder</b>, I got Luca 🐕 back in less then one day! 
@@ -52,7 +52,7 @@ export default class Home extends Component {
                             <Card.Img variant="top" src={story3} />
                             <Card.Body>
                                 <Card.Title>
-                                    Marie &amp; Bonny <i class="fas fa-dog"></i>
+                                    Marie &amp; Bonny <i className="fas fa-dog"></i>
                                 </Card.Title>
                                 <Card.Text>
                                     " Our daughter Marie was heartbroken, when Bonny ran away...
@@ -67,7 +67,7 @@ export default class Home extends Component {
                             <Card.Img variant="top" src={story2} />
                             <Card.Body>
                                 <Card.Title>
-                                    Gabriel &amp; Nala <i class="fas fa-cat"></i>
+                                    Gabriel &amp; Nala <i className="fas fa-cat"></i>
                                 </Card.Title>
                                 <Card.Text>
                                     " <b>PetFinder</b> is a must for every pet owner! 🐈 🐕 🐇 🐍 "

@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const userHelper = require('../../helper/user.helper');
 
-router.use('/', (req, res) => {
+router.post('/', (req, res) => {
     userHelper
-        .read(req.decoded.userUUID)
-        .then(profile => res.json({ status: true, profile }))
+        .readData(req.decoded.userUUID)
+        .then((data) => res.json({ status: true, data }))
         .catch((error) => console.log(error))
 });
 

@@ -19,9 +19,9 @@ const create = (userUUID, image, petKind, petName, description, location, lat, l
     })
 }
 
-const read = () => { return petModel.find() }
+const read = () => { petModel.find() }
 
-const findOne = (uuid) => { return petModel.findOne({ uuid })}
+const findOne = (uuid) => { petModel.findOne({ uuid })}
 
 module.exports = {
     create,
