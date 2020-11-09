@@ -1,26 +1,12 @@
 @import './vars';
 
-.main__container__signup {
+.login__container {
     margin: 0px auto 160px auto;
-}
-
-.svg__left__signup {
-    position: absolute;
-    width: 1600px;
-    margin-left: -900px;
-    margin-top: -720px;
-    z-index: -1;
-    margin-bottom: -1200px;
-}
-
-.signup__container__left {
-    margin-left: $big-spacing;
-    margin-top: 120px;
-    .signup__header {
+    .login__header {
         font-family: $header-font;
         font-size: $header-font-size;
     }
-    .signup__subheader {
+    .login__subheader {
         font-family: $text-font;
         font-size: $text-font-size;
     }
@@ -28,6 +14,8 @@
         font-family: $text-font;
     }
     input {
+        width: 80%;
+        margin: 0 auto;
         font-family: $text-font;
         border: none;
         background-color: #F3F3F3;
@@ -52,12 +40,11 @@
     }
 }
 
-.signup__container__right {
-    margin-right: $big-spacing;
-    margin-top: $big-spacing;
-    img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
+.svg__left {
+    position: absolute;
+    width: 1600px;
+    margin-left: -1600px;
+    margin-top: -560px;
+    z-index: -1;
+    margin-bottom: -1200px;
 }

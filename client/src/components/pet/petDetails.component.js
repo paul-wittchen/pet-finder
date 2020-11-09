@@ -97,8 +97,8 @@ export default class PetDetails extends Component {
                     </Row>
                 ) : (
                     <span>
-                        <p><i className="fas fa-phone-alt"></i> {this.state.petData.phone}</p>
-                        <p><i className="far fa-envelope"></i> {this.state.petData.mail}</p>
+                        <a className='pet__details__contact__details' href={'tel:' + this.state.petData.phone}><i className="fas fa-phone-alt"></i> {this.state.petData.phone}</a>      
+                        <a className='pet__details__contact__details' href={'mailto:' + this.state.petData.mail}><i className="far fa-envelope"></i> {this.state.petData.mail}</a> 
                     </span>
                 )}
                 <div className='map' ref={el => this.mapContainer = el} />
