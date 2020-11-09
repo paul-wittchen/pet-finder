@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import '../../styles/usersPets.scss';

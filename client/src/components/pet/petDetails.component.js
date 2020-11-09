@@ -46,7 +46,6 @@ export default class PetDetails extends Component {
     }
 
     render() {
-        console.log(this.state.petData.petName);
         return(
             <div className='pet__details__container'>
                 <Row className='pet__details__row'>
@@ -55,7 +54,13 @@ export default class PetDetails extends Component {
                     </Col>
                     <Col lg={6} className='pet__details__right'>
                         <p className='pet__details__name'>{this.state.petData.petName}</p>
-                        <p className='pet__details__desc'>{this.state.petData.description}</p>
+                        { this.state.petData.description >= 1000 ? (
+                            <p className='pet__details__desc'>
+                                {this.state.petData.substring(0, 1000)}
+                            </p>
+                        ) : (
+                            <p className='pet__details__desc'>{this.state.petData.description}</p>
+                        )}
                         <Row className='pet__details__info__row'>
                             <Col>
                                 <p className='pet__details__row__desc'>Kind:</p>
@@ -80,6 +85,22 @@ export default class PetDetails extends Component {
                         </Row>
                     </Col>
                 </Row>
+                <p className='pet__details__contact__header'>You found {this.state.petData.petName}?</p>
+                {(this.state.petData.phone && this.state.petData.mail) != null ? (
+                    <Row className='text-center'>
+                        <Col>
+                            <a className='pet__details__contact__details' href={'tel:' + this.state.petData.phone}><i className="fas fa-phone-alt"></i> {this.state.petData.phone}</a>      
+                        </Col>
+                        <Col>
+                            <a className='pet__details__contact__details' href={'mailto:' + this.state.petData.mail}><i className="far fa-envelope"></i> {this.state.petData.mail}</a>      
+                        </Col>
+                    </Row>
+                ) : (
+                    <span>
+                        <p><i className="fas fa-phone-alt"></i> {this.state.petData.phone}</p>
+                        <p><i className="far fa-envelope"></i> {this.state.petData.mail}</p>
+                    </span>
+                )}
                 <div className='map' ref={el => this.mapContainer = el} />
             </div>
         )

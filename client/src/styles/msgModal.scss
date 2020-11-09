@@ -15,6 +15,7 @@
         text-align: center;
         font-family: $text-font;
         font-size: 20px;
+        
         button {
             background-color: $third-color;
             border: none;
@@ -28,30 +29,6 @@
             font-family: $text-font;
             &:hover {
                 background-color: $primary-color;
-            }
-        }
-    }
-    .modal__msg__form {
-        width: 100%;
-        text-align: center;
-        label {
-            font-family: $text-font;
-            font-size: 16px;
-        }
-        input {
-            font-family: $text-font;
-            border: none;
-            background-color: #F3F3F3;
-            &:focus {
-                background-color: #F3F3F3;
-            }
-        }
-        textarea {
-            font-family: $text-font;
-            border: none;
-            background-color: #F3F3F3;
-            &:focus {
-                background-color: #F3F3F3;
             }
         }
     }
