@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/navbar';
+import Footer from './components/footer';
 import Home from './components/home';
 import Signup from './components/user/signup.component';
 import Login from './components/user/login.component';
@@ -21,6 +22,7 @@ function App() {
       <Route path='/lost-pet' exact component={CreatePet}/>
       <Route path='/pets-list' exact component={ListPets}/>
       <Route path='/pets-list/:id' exact component={PetDetails}/>
+      <Footer/>
     </Router>
   );
 }

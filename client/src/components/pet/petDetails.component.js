@@ -50,10 +50,10 @@ export default class PetDetails extends Component {
         return(
             <div className='pet__details__container'>
                 <Row className='pet__details__row'>
-                    <Col className='pet__details__left'>
+                    <Col lg={6} className='pet__details__left'>
                         <img src={this.state.petData.image} alt=""/>
                     </Col>
-                    <Col className='pet__details__right'>
+                    <Col lg={6} className='pet__details__right'>
                         <p className='pet__details__name'>{this.state.petData.petName}</p>
                         <p className='pet__details__desc'>{this.state.petData.description}</p>
                         <Row className='pet__details__info__row'>

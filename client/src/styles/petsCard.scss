@@ -56,6 +56,10 @@
         border-top: none;
         text-align: center;
         padding: 24px 0px;
+        a {
+            text-decoration: none;
+            padding: 8px 16px;
+        }
         .pet__card__btn {
             background-color: $third-color;
             border: none;

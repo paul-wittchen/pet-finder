@@ -6,6 +6,14 @@
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
     margin: 16px 16px;
     border-radius: 24px !important;
+    a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            text-decoration: none;
+            color: black;
+        }
+    }
     .users__pets__image {
         border-radius: 24px 24px 0px 0px !important;
         height: 320px;
@@ -46,7 +54,7 @@
         padding: 24px 0px;
         .users__pets__btn {
             background-color: $third-color;
-            width: 30%;
+            width: 200px;
             cursor: pointer;
             border: none;
             border-radius: 16px;
