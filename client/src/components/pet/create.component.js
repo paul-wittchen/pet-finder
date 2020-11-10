@@ -52,6 +52,7 @@ export default class CreatePet extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
+
         this.setState({
             uploading: true
         })

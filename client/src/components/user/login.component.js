@@ -11,7 +11,8 @@ export default class Login extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errorMsg: ''
         }
     }
 
@@ -24,19 +25,23 @@ export default class Login extends Component {
     onSubmit = (event) => {
         event.preventDefault()
 
-        const user = {
-            email: this.state.email,
-            password: this.state.password
+        if (this.state.email && this.state.password) {
+            const user = {
+                email: this.state.email,
+                password: this.state.password
+            }
+    
+            axios
+                .post('http://localhost:8000/login', user)
+                .then((res) => {
+                    if (res.data.status) {
+                        Cookies.set('token', res.data.token)
+                    }
+                    window.location = '/profile'
+                })
+        } else {
+            this.setState({ errorMsg: 'Oops, something went wrong...!'})
         }
-
-        axios
-            .post('http://localhost:8000/login', user)
-            .then((res) => {
-                if (res.data.status) {
-                    Cookies.set('token', res.data.token)
-                }
-                window.location = '/profile'
-            })
     }
 
     render() {
@@ -45,7 +50,7 @@ export default class Login extends Component {
                 <Row className='main__container__signup justify-content-center text-center'>
                     <Col className='signup__container__left' lg={4}>
                         <p className='login__header'>Login</p>
-                        <p className='login__subheader'>Good to see you again</p>
+                        <p className='login__subheader'>Dont have an account yet? <a href="/signup">Sign up</a></p>
                         <Form onSubmit={this.onSubmit}>
                             <Form.Group controlId="email">
                                 <Form.Label>Email address</Form.Label>
@@ -68,6 +73,8 @@ export default class Login extends Component {
                             <Button variant="primary" type="submit">
                                 Login
                             </Button>
+                            <br/>
+                            <span className='login__errorMsg'>{this.state.errorMsg}</span>
                         </Form>
                     </Col>
                     <Col className='signup__container__right' lg={4}>

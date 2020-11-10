@@ -134,6 +134,9 @@
         &:hover {
             background-color: $primary-color !important;
         }
+        &:active {
+            background-color: $primary-color !important;
+        }
     }
 }
 

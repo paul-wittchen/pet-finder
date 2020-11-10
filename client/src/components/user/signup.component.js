@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import '../../styles/signup.scss';
 import dog from '../../images/signup.png';
 
@@ -13,7 +14,11 @@ export default class Signup extends Component {
             lastname: '',
             email: '',
             password: '',
-            isChecked: false
+            isChecked: false,
+            firstnameError: '',
+            lastnameError: '',
+            emailError: '',
+            passwordError: ''
         }
     }
 
@@ -31,22 +36,35 @@ export default class Signup extends Component {
         })
     }
 
+
     onSubmit = (event) => {
         event.preventDefault();
 
-        const user = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            email: this.state.email,
-            password: this.state.password
-        }
+        const emailRegex = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
 
-        if (this.state.isChecked) {
-            axios
-            .post('http://localhost:8000/signup', user)
-            .then((res) => window.location = res.data.url)
+        if (this.state.firstname === '') {
+            this.setState({ firstnameError: 'Please enter your firstname'})
+        } else if (this.state.lastname === ''){
+            this.setState({ lastnameError: 'Please enter your lastname'})
+        } else if (this.state.email === '' || this.state.email.match(emailRegex)){
+            this.setState({ emailError: 'Please enter a valid email'})
+        } else if (this.state.password === '' || this.state.password.length <= 6){
+            this.setState({ passwordError: 'Please enter your password'})
         } else {
-            alert('Please agree to our terms')
+            const user = {
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                email: this.state.email,
+                password: this.state.password
+            }
+    
+            if (this.state.isChecked) {
+                axios
+                .post('http://localhost:8000/signup', user)
+                .then((res) => (window.location = res.data.url));
+            } else {
+                alert('Please agree to our terms')
+            }
         }
     }
 
@@ -61,44 +79,48 @@ export default class Signup extends Component {
                             <Row>
                                 <Col>
                                 <Form.Group controlId="firstname">
-                                <Form.Label>Firstname</Form.Label>
+                                <Form.Label>Firstname *</Form.Label>
                                 <Form.Control 
                                     type="text"
                                     name='firstname'
                                     value={this.state.firstname}
                                     onChange={this.onChange}
                                 />
+                                <span className='signup__error__msg'>{this.state.firstnameError}</span>
                             </Form.Group>
                                 </Col>
                                 <Col>
                                 <Form.Group controlId="lastname">
-                                <Form.Label>Lastname</Form.Label>
+                                <Form.Label>Lastname *</Form.Label>
                                 <Form.Control 
                                     type="text" 
                                     name='lastname'
                                     value={this.state.lastname}
                                     onChange={this.onChange}
                                 />
+                                <span className='signup__error__msg'>{this.state.lastnameError}</span>
                             </Form.Group>
                                 </Col>
                             </Row>    
                             <Form.Group controlId="email">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label>Email address *</Form.Label>
                                 <Form.Control 
                                     type="email"
                                     name='email'
                                     value={this.state.email}
                                     onChange={this.onChange}
                                 />
+                                <span className='signup__error__msg'>{this.state.emailError}</span>
                             </Form.Group>
                             <Form.Group controlId="password">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>Password *</Form.Label>
                                 <Form.Control 
                                     type="password"
                                     name='password'
                                     value={this.state.password}
                                     onChange={this.onChange}
                                 />
+                                <span className='signup__error__msg'>{this.state.passwordError}</span>
                             </Form.Group>
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check 

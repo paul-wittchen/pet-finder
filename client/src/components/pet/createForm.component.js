@@ -40,8 +40,8 @@ export default class FormCreate extends Component {
                                 name='petName'
                                 value={this.props.petName}
                                 onChange={this.props.onChange}
-                                required
                                 placeholder='e.g. Fluffy'
+                                required
                             />
                         </Form.Group>
                     </Col>
@@ -53,7 +53,8 @@ export default class FormCreate extends Component {
                                 defaultValue="Choose..."
                                 name='petKind'
                                 onChange={this.props.onChange}
-                                required>
+                                required
+                                >
                                 <option value='Something else'>Choose...</option>
                                 <option value='Dog'>Dog</option>
                                 <option value='Cat'>Cat</option>
