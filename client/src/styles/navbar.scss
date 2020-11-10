@@ -2,4 +2,19 @@
 
 .navbar__main {
     padding: 16px $big-spacing !important;
+    a {
+        font-family: $header-font;
+        transition: all .5s;
+        margin: 0px 8px;
+        &:hover {
+            animation: nav__links .5s;
+            @keyframes nav__links {
+                0% {margin-top: 0px;}
+                25% {margin-top: -4px;}
+                50% {margin-top: -8px;}
+                75% {margin-top: -4px;}
+                100% {margin-top: 0px;}
+            }
+        }
+    }
 }

@@ -9,6 +9,7 @@
         font-size: 64px;
         text-align: center;
         color: white;
+        margin-top: 80px;
     }
     
     .home__subheader {
@@ -52,7 +53,7 @@
 }
 
 .home__stories__row {
-    margin-top: -120px;
+    margin-top: -80px;
     margin-bottom: $big-spacing;
     .card {
         border-radius: 24px;
