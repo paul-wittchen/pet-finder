@@ -34,7 +34,7 @@ export default class FormCreate extends Component {
                 <Row>
                     <Col>
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Whats the name of your pet? *</Form.Label>
+                            <Form.Label>Whats the name of your pet?*</Form.Label>
                             <Form.Control 
                                 type="text" 
                                 name='petName'
@@ -47,7 +47,7 @@ export default class FormCreate extends Component {
                     </Col>
                     <Col>
                         <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>What kind of pet, are you missing? *</Form.Label>
+                            <Form.Label>What kind of pet, are you missing?*</Form.Label>
                             <Form.Control 
                                 as="select"
                                 defaultValue="Choose..."
@@ -65,7 +65,7 @@ export default class FormCreate extends Component {
                     </Col>
                 </Row>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Describe your pet! *</Form.Label>
+                    <Form.Label>Describe your pet!*</Form.Label>
                     <Form.Control 
                         as="textarea" 
                         name='description'
@@ -74,12 +74,13 @@ export default class FormCreate extends Component {
                         value={this.props.description}
                         onChange={this.props.onChange}
                         required
+                        maxLength='600'
                     />
                 </Form.Group>
                 <Row>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Where have you seen your pet the last time? *</Form.Label>
+                            <Form.Label>Where have you seen your pet the last time?*</Form.Label>
                             <AlgoliaPlaces
                                 placeholder='location'
                                 onChange={this.props.handleAlgoliaChange}

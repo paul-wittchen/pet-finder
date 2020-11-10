@@ -47,7 +47,6 @@ export default class Profile extends Component {
                     </svg>
                     <Row className='profile__basic__row justify-content-center'>
                         <Col lg={4} className='container__left'>
-                            <img className='profile__pic' src="https://source.unsplash.com/random" alt="Profilepic"/>
                             <p className='profile__firstname'>{this.state.user.firstname}</p>
                             <p className='profile__lastname'>{this.state.user.lastname}</p>
                             <a href="/" onClick={this.logout}>Logout</a>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import '../../styles/signup.scss';
 import dog from '../../images/signup.png';
 
@@ -40,7 +39,7 @@ export default class Signup extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        const emailRegex = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (this.state.firstname === '') {
             this.setState({ firstnameError: 'Please enter your firstname'})

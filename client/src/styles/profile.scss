@@ -18,21 +18,24 @@
 .container__left {
     margin-top: 16px;
     .profile__firstname {
-        font-size: $header-font-size;
+        margin-top: 240px;
+        font-size: 40px;
         font-family: $header-font;
         color: white;
     }
     .profile__lastname {
-        font-size: $header-font-size;
+        font-size: 40px;
         font-family: $header-font;
         margin-top: -24px;
         color: white;
     }
-    .profile__pic {
-        width: 240px;
-        height: 320px;
-        object-fit: cover;
-        border-radius: 24px;
+    a {
+        color: $third-color;
+        font-family: $text-font;
+        &:hover {
+            color: red;
+            text-decoration: none;
+        }
     }
 }
 

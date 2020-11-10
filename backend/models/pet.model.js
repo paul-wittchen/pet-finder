@@ -30,7 +30,8 @@ const petSchema = new Schema(
         description: {
             type: String,
             trim: true,
-            required: true
+            required: true,
+            maxlength: 600
         },
         location: {
             type: String,

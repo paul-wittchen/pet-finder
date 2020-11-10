@@ -23,6 +23,7 @@
         .pet__details__desc {
             font-family: $text-font;
             font-size: 16px;
+            margin-bottom: 40px;
         }
         .pet__details__info__row {
             background-color: rgb(238, 238, 238);
@@ -48,16 +49,14 @@
 .pet__details__contact__header {
     text-align: center;
     font-family: $header-font;
-    margin-top: 40px;
     font-size: 32px;
 }
 
 .pet__details__contact__details {
     background-color: $third-color;
-    padding: 16px 80px;
+    padding: 12px 40px;
     border-radius: 24px;
     color: white;
-    margin: 0px auto;
     cursor: pointer;
     text-decoration: none;
     transition: .5s;
