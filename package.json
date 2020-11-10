@@ -28,5 +28,13 @@
     "nodemon": "^2.0.6",
     "places.js": "^1.19.0",
     "uuid": "^8.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul-wittchen/pet-finder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paul-wittchen/pet-finder/issues"
+  },
+  "homepage": "https://github.com/paul-wittchen/pet-finder#readme"
 }
