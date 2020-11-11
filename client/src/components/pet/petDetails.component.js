@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '../../styles/petDetails.scss';
+import backendDomain from '../../utility'
 
 export default class PetDetails extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class PetDetails extends Component {
 
     componentDidMount() {
         axios
-            .get('http://localhost:8000/pets-list/' + window.location.href.split('/')[4])
+            .get(`${backendDomain}/pets-list/${window.location.href.split('/')[4]}`)
             .then((res) => {
                 this.setState({ petData: res.data.pet })
             })

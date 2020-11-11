@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../../styles/profile.scss';
 import { Row, Col } from 'react-bootstrap';
 import UsersPets from '../pet/usersPets'
+import backendDomain from '../../utility'
 
 export default class Profile extends Component {
     constructor() {
@@ -18,7 +19,7 @@ export default class Profile extends Component {
 
     componentDidMount() {
         axios
-            .post('http://localhost:8000/profile', { token: this.state.token })
+            .post(`${backendDomain}/profile`, { token: this.state.token })
             .then((res) => {
                 this.setState({ user: res.data.data })
             })
@@ -27,7 +28,7 @@ export default class Profile extends Component {
 
     deletePet = (uuid) => {
         axios
-            .delete('http://localhost:8000/profile/' + uuid, { data: { token: this.state.token } })
+            .delete(`${backendDomain}/profile/${uuid}`, { data: { token: this.state.token } })
             .then(res => console.log(res.data));
     }
 

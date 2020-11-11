@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon start"
+    "start": "stage=prod nodemon start",
+    "offline": "stage=dev nodemon start"
   },
   "author": "",
   "license": "ISC",

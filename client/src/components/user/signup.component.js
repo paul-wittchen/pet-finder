@@ -3,6 +3,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import '../../styles/signup.scss';
 import dog from '../../images/signup.png';
+import backendDomain from '../../utility'
 
 export default class Signup extends Component {
     constructor() {
@@ -59,7 +60,7 @@ export default class Signup extends Component {
     
             if (this.state.isChecked) {
                 axios
-                .post('http://localhost:8000/signup', user)
+                .post(`${backendDomain}/signup`, user)
                 .then((res) => (window.location = res.data.url));
             } else {
                 alert('Please agree to our terms')

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import '../../styles/login.scss';
 import dog from '../../images/signup.png';
+import backendDomain from '../../utility'
 
 export default class Login extends Component {
     constructor() {
@@ -32,7 +33,7 @@ export default class Login extends Component {
             }
     
             axios
-                .post('http://localhost:8000/login', user)
+                .post(`${backendDomain}/login`, user)
                 .then((res) => {
                     if (res.data.status) {
                         Cookies.set('token', res.data.token)

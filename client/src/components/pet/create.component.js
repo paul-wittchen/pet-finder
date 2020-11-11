@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import '../../styles/createPet.scss';
 import BounceLoader from "react-spinners/BounceLoader";
 import CreateForm from './createForm.component';
+import backendDomain from '../../utility'
 
 export default class CreatePet extends Component {
     constructor() {
@@ -61,7 +62,7 @@ export default class CreatePet extends Component {
         data.append('image', this.state.image, this.state.image.name)
         data.append('token', Cookies.get('token'))
 
-        axios.post('http://localhost:8000/upload-pet-image', data, {
+        axios.post(`${backendDomain}/upload-pet-image`, data, {
             headers: {
               'accept': 'application/json',
               'Accept-Language': 'en-US,en;q=0.8',
@@ -86,7 +87,7 @@ export default class CreatePet extends Component {
                 }
         
                 axios
-                    .post('http://localhost:8000/lost-pet', pet)
+                    .post(`${backendDomain}/lost-pet`, pet)
                     .then((res) => window.location = res.data.url)
             } else {
                 console.log('request failed');

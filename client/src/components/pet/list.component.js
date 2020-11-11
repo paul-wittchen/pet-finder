@@ -3,6 +3,7 @@ import axios from 'axios';
 import PetCard from './petCard.component';
 import '../../styles/petsList.scss';
 import { Row } from 'react-bootstrap';
+import backendDomain from '../../utility'
 
 export default class ListPets extends Component {
     constructor() {
@@ -15,7 +16,7 @@ export default class ListPets extends Component {
 
     componentDidMount() {
         axios
-            .get('http://localhost:8000/pets-list')
+            .get(`${backendDomain}/pets-list`)
             .then((res) => {
                 this.setState({
                     pets: res.data.pets
