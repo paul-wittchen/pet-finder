@@ -17,7 +17,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Build
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/pets-list', express.static(path.join(__dirname, 'build')));
+app.use('/pets-list/:uuid', express.static(path.join(__dirname, 'build')));
 app.use('/login', express.static(path.join(__dirname, 'build')));
+app.use('/profile', express.static(path.join(__dirname, 'build')));
+app.use('/signup', express.static(path.join(__dirname, 'build')));
+app.use('/lost-pet', express.static(path.join(__dirname, 'build')));
 // app.get('/*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // });
