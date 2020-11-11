@@ -46,7 +46,7 @@ export default class Signup extends Component {
             this.setState({ firstnameError: 'Please enter your firstname'})
         } else if (this.state.lastname === ''){
             this.setState({ lastnameError: 'Please enter your lastname'})
-        } else if (this.state.email === '' || this.state.email.match(emailRegex)){
+        } else if (this.state.email === '' || !this.state.email.match(emailRegex)){
             this.setState({ emailError: 'Please enter a valid email'})
         } else if (this.state.password === '' || this.state.password.length <= 6){
             this.setState({ passwordError: 'Please enter your password'})
