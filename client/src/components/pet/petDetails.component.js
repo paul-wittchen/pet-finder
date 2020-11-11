@@ -18,7 +18,7 @@ export default class PetDetails extends Component {
 
     componentDidMount() {
         axios
-            .get(`${backendDomain}/pets-list/${window.location.href.split('/')[4]}`)
+            .post(`${backendDomain}/pets-list/${window.location.href.split('/')[4]}`)
             .then((res) => {
                 this.setState({ petData: res.data.pet })
             })
