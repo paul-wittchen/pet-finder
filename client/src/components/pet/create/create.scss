@@ -1,0 +1,25 @@
+@import '../../../assets/styles/vars';
+
+.pet__create__header {
+    font-family: $header-font;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    @media (max-width: 640px) {
+        font-size: 32px;
+    }
+}
+
+.pet__create__loader__container {
+    text-align: center;
+    margin-top: $big-spacing;
+    margin-bottom: 320px;
+    .pet__create__loader__header {
+        font-weight: $header-font;
+        font-size: $header-font-size;
+        color: $third-color;
+    }
+    .css-1fu4ans {
+        margin: 40px auto;
+    }
+}

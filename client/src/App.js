@@ -1,15 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-import Navigation from './components/navbar';
-import Footer from './components/footer';
-import Home from './components/home';
-import Signup from './components/user/signup.component';
-import Login from './components/user/login.component';
-import Profile from './components/user/profile.component';
-import CreatePet from './components/pet/create.component';
-import ListPets from './components/pet/list.component';
-import PetDetails from './components/pet/petDetails.component';
+import Navigation from './components/navbar/navbar';
+import Footer from './components/footer/footer';
+import Home from './components/home/home';
+import Signup from './components/user/signup/signup.component';
+import Login from './components/user/login/login.component';
+import Profile from './components/user/profile/profile.component';
+import CreatePet from './components/pet/create/create.component';
+import ListPets from './components/pet/list/list.component';
+import PetDetails from './components/pet/petDetails/petDetails.component';
 
 function App() {
   return (

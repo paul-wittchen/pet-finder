@@ -1,0 +1,102 @@
+@import '../../assets/styles/vars';
+
+.jumbotron {
+    background: rgba(204, 204, 204, 0) !important;
+    height: 88vh !important;
+    margin-top: -80px;
+    .home__header {
+        font-family: $header-font;
+        font-size: 64px;
+        text-align: center;
+        color: $white;
+        margin-top: 54px;
+        @media (max-width: 640px) {
+            font-size: 48px;
+        }
+    }
+    .home__subheader {
+        font-family: $text-font;
+        font-size: $subheader-font-size;
+        text-align: center;
+        color: $white;
+        @media (max-width: 640px) {
+            font-size: 16px;
+            margin-bottom: -24px;
+        }
+    }
+}
+
+.home__cta__container {
+    text-align: center;
+    margin: $big-spacing 0px;
+    .home__cta__btn {
+        margin: 8px 64px;
+        background-color: $third-color;
+        width: 180px;
+        border: none;
+        border-radius: 32px;
+        padding: 16px 32px;
+        font-family: $text-font;
+        transition: .5s;
+        &:hover {
+            border-radius: 4px;
+            background-color: $third-color;
+        }
+        &:focus {
+            border-radius: 4px;
+            background-color: $third-color;
+        }
+    }
+}
+
+.home__row__img {
+    text-align: center;
+    .home__pet__icon {
+        width: 8vw;
+        @media (max-width: 640px) {
+            width: 16vw;
+        }
+    }
+}
+
+.home__stories__row {
+    margin-top: 80px;
+    margin-bottom: 240px;
+    @media (max-width: 640px) {
+        margin-top: 160px;
+        margin-bottom: 200px;
+    }
+    .card {
+        border-radius: 24px;
+        border: none !important;
+        box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.123);
+        width: 50vw;
+        background-color: $white;
+        @media (max-width: 640px) {
+            width: 60vw;
+            height: 48vh;
+        }
+        img {
+            border-radius: 24px 24px 0px 0px !important;
+            height: 320px;
+            width: 100%;
+            object-fit: cover;
+            @media (max-width: 640px) {
+                height: 140px;
+                width: 40px;
+                width: 100%;
+            }
+        }
+        .card-title {
+            font-family: $header-font;
+            text-align: center;
+            i {
+                color: $primary-color;
+            }
+        }
+        .card-text {
+            font-family: $text-font;
+            font-size: 16px;
+        }
+    }
+}

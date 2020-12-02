@@ -1,0 +1,56 @@
+@import '../../../assets/styles/vars';
+
+.profile__container {
+    padding: 24px $big-spacing;
+    @media (max-width: 640px) {
+        padding: 0px 16px;
+    }
+}
+
+.container__left {
+    margin-top: 16px;
+    .profile__welcome__text {
+        margin-top: 120px;
+        font-size: 24px;
+        font-family: $header-font;
+        color: $white;
+        @media (max-width: 640px) {
+            margin-top: 0px;
+            font-size: 24px;
+            text-align: center;
+        }
+    }
+}
+
+.container__right {
+    .profile__add__pet {
+        text-align: center;
+        background-color: $third-color;
+        width: 32vw;
+        margin: 40px auto;
+        padding: 16px;
+        border-radius: 24px;
+        transition: all .5s;
+        color: white;
+        &:hover {
+            border-radius: 4px;
+            background-color: $third-color;
+        }
+        &:focus {
+            border-radius: 4px;
+            background-color: $third-color;
+        }
+        @media (max-width: 640px) {
+            width: 85vw;
+        }
+        a {
+            color: white;
+            font-family: $header-font;
+            font-size: 24px;
+            text-decoration: none;
+            @media (max-width: 640px) {
+                font-size: 18px;
+            }
+        }
+    }
+}

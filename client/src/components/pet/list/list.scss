@@ -1,0 +1,14 @@
+@import '../../../assets/styles/vars';
+
+.pets__list__container {
+    padding: 24px 80px;
+    @media (max-width: 640px) {
+        padding: 24px 0px;
+    }
+}
+
+.pets__list__header {
+    text-align: center;
+    font-family: $header-font;
+    font-size: $header-font-size;
+}
