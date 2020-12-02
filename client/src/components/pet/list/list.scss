@@ -12,3 +12,10 @@
     font-family: $header-font;
     font-size: $header-font-size;
 }
+
+.pets__list__empty {
+    text-align: center;
+    font-family: $text-font;
+    font-size: 24px;
+    margin: 24px auto;
+}
