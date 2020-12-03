@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 import Moment from 'react-moment';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import './petDetails.scss';
 import backendDomain from '../../../utility'
+import initMap from '../../../assets/js/initMap';
 import { FacebookShareButton, FacebookIcon, EmailShareButton, EmailIcon } from "react-share";
 
 export default class PetDetails extends Component {
@@ -26,46 +25,7 @@ export default class PetDetails extends Component {
     }
 
     componentDidUpdate() {
-        mapboxgl.accessToken = 'pk.eyJ1IjoicGF1bDA3MTEiLCJhIjoiY2toMmxybmV6MGRwbzJwcGM4am55dDhjNyJ9.RDH0hBD2iTORkidOf0FNFg';
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [this.state.petData.lon, this.state.petData.lat],
-            zoom: 14
-            });
-        new mapboxgl.Marker()
-            .setLngLat([this.state.petData.lon, this.state.petData.lat])
-            .addTo(map);
-        const nav = new mapboxgl.NavigationControl();
-            map.addControl(nav);
-            map.addControl(new mapboxgl.GeolocateControl({
-                positionOptions: {
-                enableHighAccuracy: true
-                },
-                trackUserLocation: true
-                }));
-
-        var geojson = {
-            type: 'FeatureCollection',
-            features: [{
-                type: 'Feature',
-                geometry: {
-                type: 'Point',
-                coordinates: [this.state.petData.lon, this.state.petData.lat],
-                name: 'otterfing'
-                }
-            }]
-        };
-        var el1 = document.createElement('div');
-        el1.style.cssText = `background-image: url(${this.state.petData.image});
-            background-size: cover;
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            box-shadow: 0px 0px 16px rgba(230, 230, 230, 0.267);`
-        new mapboxgl.Marker(el1)
-            .setLngLat(geojson.features[0].geometry.coordinates)
-            .addTo(map)
+        initMap(this.state.petData.lon, this.state.petData.lat, this.state.petData.image, this.mapContainer)
     }
 
     render() {
