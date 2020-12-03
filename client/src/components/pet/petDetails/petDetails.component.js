@@ -44,6 +44,28 @@ export default class PetDetails extends Component {
                 },
                 trackUserLocation: true
                 }));
+
+        var geojson = {
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                geometry: {
+                type: 'Point',
+                coordinates: [this.state.petData.lon, this.state.petData.lat],
+                name: 'otterfing'
+                }
+            }]
+        };
+        var el1 = document.createElement('div');
+        el1.style.cssText = `background-image: url(${this.state.petData.image});
+            background-size: cover;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 16px rgba(230, 230, 230, 0.267);`
+        new mapboxgl.Marker(el1)
+            .setLngLat(geojson.features[0].geometry.coordinates)
+            .addTo(map)
     }
 
     render() {
