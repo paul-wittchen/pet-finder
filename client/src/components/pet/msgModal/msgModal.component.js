@@ -11,7 +11,7 @@ export default class MessageModal extends Component {
                     <Modal.Title>
                         You found {this.props.petName} or got usefull informations?
                     </Modal.Title>
-                    <a href={'mailto:' + this.props.mail}><i className="fas fa-envelope"></i> {this.props.mail}</a>
+                    <a href={`mailto:${this.props.mail}?subject=Informations%20about%20${this.props.petName}`}><i className="fas fa-envelope"></i> {this.props.mail}</a>
                     <br/>
                     <Button variant="primary" onClick={this.props.closeModalMsg}>
                         Close

@@ -33,7 +33,7 @@ export default class FormCreate extends Component {
                     </div>
                 )}
                 <Row>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>Whats the name of your pet?*</Form.Label>
                             <Form.Control 
@@ -46,7 +46,7 @@ export default class FormCreate extends Component {
                             />
                         </Form.Group>
                     </Col>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>What kind of pet, are you missing?*</Form.Label>
                             <Form.Control 
@@ -79,7 +79,7 @@ export default class FormCreate extends Component {
                     />
                 </Form.Group>
                 <Row>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group>
                             <Form.Label>Where have you seen your pet the last time?*</Form.Label>
                             <AlgoliaPlaces
@@ -89,7 +89,7 @@ export default class FormCreate extends Component {
                             />
                         </Form.Group>
                     </Col>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group>
                             <Form.Label>Is there a reward for the founder?</Form.Label>
                             <Form.Control
@@ -103,7 +103,7 @@ export default class FormCreate extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group>
                             <Form.Label>Please enter your phone number!</Form.Label>
                             <Form.Control
@@ -115,7 +115,7 @@ export default class FormCreate extends Component {
                             />
                         </Form.Group>
                     </Col>
-                    <Col lg={6} md={12} xs={12}>
+                    <Col lg={6} md={6} xs={12}>
                         <Form.Group>
                             <Form.Label>Please enter your mail address!</Form.Label>
                             <Form.Control

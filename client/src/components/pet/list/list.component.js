@@ -30,7 +30,7 @@ export default class ListPets extends Component {
                 ) : (
                     <Row className='justify-content-center'>
                         {this.state.pets.map(pet => 
-                            <Col lg={4} md={6} xs={12}>
+                            <Col lg={4} md={6} xs={12} key={pet.uuid}>
                                 <PetCard
                                     uuid={pet.uuid}
                                     imageURL={pet.image}
@@ -42,7 +42,6 @@ export default class ListPets extends Component {
                                     createdAt={pet.createdAt}
                                     phone={pet.phone}
                                     mail={pet.mail}
-                                    key={pet.createdAt}
                                 />
                             </Col>
                         )}

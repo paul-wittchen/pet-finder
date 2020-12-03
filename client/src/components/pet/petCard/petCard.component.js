@@ -4,7 +4,8 @@ import Moment from 'react-moment';
 import './petCard.scss';
 import PhoneModal from '../phoneModal/phoneModal.component';
 import MessageModal from '../msgModal/msgModal.component';
-import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share";
+import { FacebookShareButton, FacebookIcon, EmailShareButton, EmailIcon } from "react-share";
+import backendDomain from '../../../utility'
 
 export default class PetCard extends Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class PetCard extends Component {
                     <Row className='pet__card__share'>
                         <Col lg={1} md={2} xs={2}>
                             <FacebookShareButton
-                                url={window.location.href}
+                                url={`${backendDomain}/pets-list/${this.props.uuid}`}
                                 quote={`Please help me, to find my ${this.props.petName}`}
                                 hashtag={this.props.petName}
                             >
@@ -46,19 +47,12 @@ export default class PetCard extends Component {
                             </FacebookShareButton>
                         </Col>
                         <Col lg={1} md={2} xs={2}>
-                            <TwitterShareButton
-                                title={`Please help me, to find my ${this.props.petName}`}
-                                caption={this.props.description}
+                            <EmailShareButton
+                                subject={`Please help me, to find my ${this.props.petName}`}
+                                body={this.props.description}
                             >
-                                <TwitterIcon size={40} round={true} />
-                            </TwitterShareButton>
-                        </Col>
-                        <Col lg={1} md={2} xs={2}>
-                            <FacebookMessengerShareButton
-                                title={`Please help me, to find my ${this.props.petName}`}
-                            >
-                                <FacebookMessengerIcon size={40} round={true} />
-                            </FacebookMessengerShareButton>
+                                <EmailIcon size={40} round={true} />
+                            </EmailShareButton>
                         </Col>
                     </Row>
                     <Card.Body>

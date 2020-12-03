@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './petDetails.scss';
 import backendDomain from '../../../utility'
-import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, FacebookMessengerShareButton, FacebookMessengerIcon } from "react-share";
+import { FacebookShareButton, FacebookIcon, EmailShareButton, EmailIcon } from "react-share";
 
 export default class PetDetails extends Component {
     constructor(props) {
@@ -58,27 +58,20 @@ export default class PetDetails extends Component {
                         <Row className='pet__details__share justify-content-center'>
                             <Col lg={1} md={2} xs={2}>
                                 <FacebookShareButton
-                                    url={window.location.href}
-                                    quote={`Please help me, to find my ${this.props.petName}`}
-                                    hashtag={this.props.petName}
+                                    url={`${backendDomain}/pets-list/${this.state.petData.uuid}`}
+                                    quote={`Please help me, to find my ${this.state.petData.petName}`}
+                                    hashtag={this.state.petData.petName}
                                 >
                                     <FacebookIcon size={40} round={true} />
                                 </FacebookShareButton>
                             </Col>
                             <Col lg={1} md={2} xs={2}>
-                                <TwitterShareButton
-                                    title={`Please help me, to find my ${this.props.petName}`}
-                                    caption={this.props.description}
+                                <EmailShareButton
+                                    subject={`Please help me, to find my ${this.state.petData.petName}`}
+                                    body={this.state.petData.description}
                                 >
-                                    <TwitterIcon size={40} round={true} />
-                                </TwitterShareButton>
-                            </Col>
-                            <Col lg={1} md={2} xs={2}>
-                                <FacebookMessengerShareButton
-                                    title={`Please help me, to find my ${this.props.petName}`}
-                                >
-                                    <FacebookMessengerIcon size={40} round={true} />
-                                </FacebookMessengerShareButton>
+                                    <EmailIcon size={40} round={true} />
+                                </EmailShareButton>
                             </Col>
                         </Row>
                         { this.state.petData.description ? (
@@ -94,7 +87,7 @@ export default class PetDetails extends Component {
                                     </Button>      
                                 </Col>
                                 <Col>
-                                    <Button className='pet__details__contact__button' href={'mailto:' + this.state.petData.mail}>
+                                    <Button className='pet__details__contact__button' href={`mailto:${this.state.petData.mail}?subject=Informations%20about%20${this.state.petData.petName}`}>
                                         <i className="far fa-envelope"></i> {this.state.petData.mail}
                                     </Button>      
                                 </Col>
