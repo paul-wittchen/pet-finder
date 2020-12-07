@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Spinner, Row, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import Moment from 'react-moment';
 import './petCard.scss';
 import PhoneModal from '../phoneModal/phoneModal.component';
@@ -12,16 +12,9 @@ export default class PetCard extends Component {
         super(props)
 
         this.state = {
-            loading: true,
             isOpenPhone: false,
             isOpenMsg: false
         }
-    }
-
-    componentDidMount() {
-        this.setState({
-            loading: false
-        })
     }
 
     openModalPhone = () => {this.setState({ isOpenPhone: true })}
@@ -31,9 +24,8 @@ export default class PetCard extends Component {
     closeModalMsg = () => {this.setState({ isOpenMsg: false })}
 
     render() {
-        if (!this.state.loading) {
-            return(
-                <>
+        return(
+            <>
                 <Card className='pet__card'>
                     <Card.Img variant="top" src={this.props.imageURL} />
                     <Row className='pet__card__share'>
@@ -83,18 +75,18 @@ export default class PetCard extends Component {
                             <i className="fas fa-info-circle"></i> Details
                         </Button>
                         {this.props.phone !== '' ? (
-                            <button className='pet__card__btn' onClick={this.openModalPhone}>
-                                <i className="fas fa-phone-alt"></i> Phone
-                            </button>
+                            <Button className='pet__card__btn' onClick={this.openModalPhone}>
+                                <i className="fas fa-phone-alt"/> Phone
+                            </Button>
                         ) : (
-                            <> </>
+                            null
                         )}
                         {this.props.mail !== '' ? (
-                            <button className='pet__card__btn' onClick={this.openModalMsg}>
-                                <i className="far fa-envelope"></i> Message
-                            </button>
+                            <Button className='pet__card__btn' onClick={this.openModalMsg}>
+                                <i className="far fa-envelope"/> Message
+                            </Button>
                         ) : (
-                            <> </>
+                            null
                         )}
                     </Card.Footer>
                 </Card>
@@ -110,12 +102,7 @@ export default class PetCard extends Component {
                     closeModalMsg={this.closeModalMsg}
                     open={this.state.isOpenMsg}
                 />
-                </>
-            )
-        } else {
-            return(
-                <Spinner animation="border" />
-            ) 
-        }
+            </>
+        )
     }
 }
