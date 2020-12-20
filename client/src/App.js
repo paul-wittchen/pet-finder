@@ -10,7 +10,7 @@ import CreatePet from './components/pet/create/create.component';
 import ListPets from './components/pet/list/list.component';
 import PetDetails from './components/pet/petDetails/petDetails.component';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Navigation/>
