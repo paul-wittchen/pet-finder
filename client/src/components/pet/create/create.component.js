@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import './create.scss';
@@ -6,60 +6,41 @@ import BounceLoader from "react-spinners/BounceLoader";
 import CreateForm from './createForm.component';
 import backendDomain from '../../../utility'
 
-export default class CreatePet extends Component {
-    constructor() {
-        super()
+const CreatePet = () => {
 
-        this.state = {
-            petName: '',
-            image: null,
-            petKind: 'Something else',
-            description: '',
-            location: '',
-            lat: 0.0,
-            lon: 0.0,
-            reward: '',
-            phone: '',
-            mail: '',
-            uploading: false
-        }
+    const [petName, setPetName] = useState('');
+    const [image, setImage] = useState(null);
+    const [petKind, setPetKind] = useState('Something else');
+    const [description, setDescription] = useState('');
+    const [location, setLocation] = useState('');
+    const [lat, setLat] = useState(0.0);
+    const [lon, setLon] = useState(0.0);
+    const [reward, setReward] = useState('');
+    const [phone, setPhone] = useState('');
+    const [mail, setMail] = useState('');
+    const [uploading, setUploading] = useState(false)
+
+    const handleAlgoliaChange = (query) => {
+        setLocation(`${query.suggestion.name}, ${query.suggestion.city}`)
+        setLat(query.suggestion.latlng.lat)
+        setLon(query.suggestion.latlng.lng)
     }
 
-    onChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+    const onDrop = (event) => {
+        setImage(event.target.files[0])
     }
 
-    handleAlgoliaChange = (query) => {
-        this.setState({
-            location: `${query.suggestion.name}, ${query.suggestion.city}`,
-            lat: query.suggestion.latlng.lat,
-            lon: query.suggestion.latlng.lng
-        })
+    const removeImage = () => {
+        setImage(null)
     }
 
-    onDrop = (event) => {
-        this.setState({
-            image: event.target.files[0]
-        });
-    }
-
-    removeImage = () => {
-        this.setState({
-            image: null
-        })
-    }
-
-    onSubmit = (event) => {
+    const onSubmit = (event) => {
         event.preventDefault();
 
-        this.setState({
-            uploading: true
-        })
+        setUploading(true)
 
         const data = new FormData();
-        data.append('image', this.state.image, this.state.image.name)
+        data.append('image', image, image.name)
         data.append('token', Cookies.get('token'))
 
         axios
@@ -73,17 +54,17 @@ export default class CreatePet extends Component {
             .then(res => {
                 if(res.data.status) {                
                     const pet = {
-                        petName: this.state.petName,
+                        petName: petName,
                         image: res.data.imageURL,
-                        petKind: this.state.petKind,
-                        description: this.state.description,
-                        location: this.state.location,
-                        lat: this.state.lat,
-                        lon: this.state.lon,
-                        date: this.state.date,
-                        reward: this.state.reward,
-                        phone: this.state.phone,
-                        mail: this.state.mail,
+                        petKind: petKind,
+                        description: description,
+                        location: location,
+                        lat: lat,
+                        lon: lon,
+                        date: Date.now(),
+                        reward: reward,
+                        phone: phone,
+                        mail: mail,
                         token: Cookies.get('token')
                     }
             
@@ -98,40 +79,43 @@ export default class CreatePet extends Component {
                 console.log(error);
             })
     }
-
-    render() {
-        if (!this.state.uploading) {
-            return(
-                <div>
-                    <p className='pet__create__header'>Create your search call</p>
-                    <CreateForm
-                        onSubmit={this.onSubmit}
-                        onDrop={this.onDrop}
-                        onChange={this.onChange}
-                        removeImage={this.removeImage}
-                        onImageSelect={this.onImageSelect}
-                        image={this.state.image}
-                        petName={this.state.petName}
-                        petKind={this.state.petKind}
-                        description={this.state.description}
-                        handleAlgoliaChange={this.handleAlgoliaChange}
-                        reward={this.state.reward}
-                        phone={this.state.phone}
-                        mail={this.state.mail}
-                    />
-                </div>
-            )
-        } else {
-            return(
-                <div className='pet__create__loader__container'>
-                    <p className='pet__create__loader__header'>Uploading . . .</p>
-                    <BounceLoader
-                        size={240}
-                        color={"#264653"}
-                        loading={this.state.uploading}
-                    />
-                </div>
-            )
-        }
+    if (!uploading) {
+        return(
+            <div>
+                <p className='pet__create__header'>Create your search call</p>
+                <CreateForm
+                    onSubmit={onSubmit}
+                    onDrop={onDrop}
+                    petNameChange={event => setPetName(event.target.value)}
+                    petKindChange={event => setPetKind(event.target.value)}
+                    descriptionChange={event => setDescription(event.target.value)}
+                    rewardChange={event => setReward(event.target.value)}
+                    phoneChange={event => setPhone(event.target.value)}
+                    mailChange={event => setMail(event.target.value)}
+                    removeImage={removeImage}
+                    image={image}
+                    petName={petName}
+                    petKind={petKind}
+                    description={description}
+                    handleAlgoliaChange={handleAlgoliaChange}
+                    reward={reward}
+                    phone={phone}
+                    mail={mail}
+                />
+            </div>
+        )
+    } else {
+        return(
+            <div className='pet__create__loader__container'>
+                <p className='pet__create__loader__header'>Uploading . . .</p>
+                <BounceLoader
+                    size={240}
+                    color={"#264653"}
+                    loading={uploading}
+                />
+            </div>
+        )
     }
 }
+
+export default CreatePet;
