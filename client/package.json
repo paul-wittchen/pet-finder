@@ -60,9 +60,10 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.5",
-    "jest": "^26.6.0"
+    "enzyme-adapter-react-16": "^1.15.5"
   },
   "author": "Paul Wittchen",
   "license": "ISC"
