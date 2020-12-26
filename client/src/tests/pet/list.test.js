@@ -8,10 +8,13 @@ describe('List Component', () => {
         const wrapper = shallow(<ListPets/>);
         expect(wrapper.exists()).toBe(true)
     })
-
     it('className exists', () => {
         const wrapper = shallow(<ListPets/>);
         expect(wrapper.exists('.pets__list__empty')).toBe(true);
+    })
+    it('return exists', () => {
+        const wrapper = shallow(<ListPets/>);
+        expect(wrapper.contains(<p className='pets__list__empty'>There are no open search calls</p>)).toBe(true);
     })
 })
 

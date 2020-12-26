@@ -8,7 +8,7 @@ import backendDomain from '../../../utility'
 const ListPets = () => {
 
     const [pets, setPets] = useState([]);
-
+    
     useEffect(() => {
         axios
         .post(`${backendDomain}/pets-list`)
@@ -21,8 +21,8 @@ const ListPets = () => {
             <p className='pets__list__header'>The "runaways"</p>
             { pets && pets.length < 1 ? (
                 <p className='pets__list__empty'>There are no open search calls</p>
-            ) : (
-                <Row className='justify-content-center'>
+                ) : (
+                    <Row className='justify-content-center'>
                     {pets.map(pet => 
                         <Col lg={4} md={6} xs={12} key={pet.uuid}>
                             <PetCard
