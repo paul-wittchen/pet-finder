@@ -3,20 +3,14 @@ import Enzyme, { shallow } from 'enzyme';
 import ListPets from '../../components/pet/list/list.component';
 import Adapter from 'enzyme-adapter-react-16';
 
+Enzyme.configure({ adapter: new Adapter() });
+
 describe('List Component', () => {
+    const wrapper = shallow(<ListPets/>);
     it('renders as expected', () => {
-        const wrapper = shallow(<ListPets/>);
         expect(wrapper.exists()).toBe(true)
     })
-    it('className exists', () => {
-        const wrapper = shallow(<ListPets/>);
-        expect(wrapper.exists('.pets__list__empty')).toBe(true);
-    })
-    it('return exists', () => {
-        const wrapper = shallow(<ListPets/>);
-        expect(wrapper.contains(<p className='pets__list__empty'>There are no open search calls</p>)).toBe(true);
+    it('should not render PetCard', () => {
+        expect(wrapper.find('div.pet__card').length).toEqual(0);
     })
 })
-
-
-Enzyme.configure({ adapter: new Adapter() });

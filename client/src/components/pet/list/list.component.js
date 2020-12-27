@@ -15,7 +15,7 @@ const ListPets = () => {
         .then((res) => { setPets(res.data.pets) })
         .catch((error) => console.log(error))
     })
-    
+
     return(
         <div className='pets__list__container'>
             <p className='pets__list__header'>The "runaways"</p>
